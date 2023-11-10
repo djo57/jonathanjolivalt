@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Rejang&display=swap');
+
+:root {
+    --color1: #012;
+    --color2: #024;
+    --color3: #036;
+    --color4: #048;
+    --color5: #05A;
+    --color6: #06C;
+    --color7: #07E;
+    --color8: #09F;
+    --box-border: 5px solid white;
+    --gsap-rotation: 0deg;
+    --gsap-border-radius: 0px;
+    --gsap-gradiant: linear-gradient(180deg, rgba(194,221,233,1) 0%, rgba(255,255,255,1) 100%);
+    --gsap-gradiant-moz: -moz-linear-gradient(180deg, rgba(194,221,233,1) 0%, rgba(255,255,255,1) 100%);
+    --gsap-gradiant-webkit: -webkit-linear-gradient(180deg, rgba(194,221,233,1) 0%, rgba(255,255,255,1) 100%);
+    --gsap-h1: 100%;
+    --gsap-h1-margin: -50px;
+    --gsap-skills-gradiant: radial-gradient(circle, rgba(0,17,34,1) 50%, rgba(255,255,255,0) 70%);
+    --gsap-box-shadow: 0px 0px 10px #FFFFFF;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+}
+.button{
+    background: var(--color1);
+    background: var(--gsap-gradiant-moz);
+    background: var(--gsap-gradiant-webkit);
+    background: var(--gsap-gradiant);
+    cursor: pointer;
+}
+.error{
+    color: rgb(163, 0, 0);
+}
+.ok{
+    color: rgb(0, 114, 0);
+}
+ul,ol{
+    list-style-type: none;
+}
+body{
+    overflow-x: hidden;
+    font-family: 'Noto Sans Rejang', sans-serif;
+}
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+section::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to top, white, transparent);
+    z-index: 100;
+}
+section img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    pointer-events: none;
+}
+section img#man{
+    transform-origin: bottom;
+}
+h1{
+    color: white;
+    font-size: 5rem;
+    background-color: var(--color1);
+    text-align: right;
+    padding-right: 10%;
+    width: 800px;
+    -webkit-transform:skew(-30deg);
+	-moz-transform:skew(-30deg);
+	-o-transform:skew(-30deg);
+	tranform:skew(-30deg);
+    float: right;
+    transform-origin: bottom;
+    margin-top: 10px; /* before margin */
+    margin-bottom: 10px;
+    background: var(--color1);
+    background: -moz-linear-gradient(38deg, var(--color1) 0%, var(--color3) 100%);
+    background: -webkit-linear-gradient(38deg, var(--color1)  0%, var(--color3) 100%);
+    background: linear-gradient(38deg, var(--color1)  0%, var(--color3) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="var(--color1)",endColorstr="var(--color3)",GradientType=1);
+}
+h1::before{
+    content: "";
+    display: block;
+    position: absolute;
+    margin-left: var(--gsap-h1-margin);
+    height: 20px;
+    margin-top: -10px;
+    width: var(--gsap-h1);
+    background-color: var(--color3);
+    opacity: 0.5;
+}
+h1::after{
+    content: "";
+    display: block;
+    margin-left: var(--gsap-h1-margin);
+    margin-top: -20px;
+    height: 20px;
+    width: var(--gsap-h1);
+    background-color: var(--color5);
+    /*position: absolute;*/
+    opacity: 0.5;
+    transform: translateY(10px)
+}
+@media only screen and (max-width: 1000px) {
+    h1{
+        font-size: 4rem;
+        width: 500px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    h1{
+        font-size: 3rem;
+        margin-bottom: 50px;
+        width: 400px;
+    }
+}
+.sec{
+    position: relative;
+    /*padding: 100px;*/
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+.sec .content{
+    clear: both;
+}
+/*.sec:nth-child(odd){ 
+    background-color:beige;
+}*/
+/*.sec:not(.sec:first-child){
+    border-top: 10px solid red;
+}*/
+h2{
+    color: #222;
+    font-size: 5rem;
+}
+
+/* INTRO BAR */
+
+.bar{
+    position: absolute;
+    width: 100%;
+    background-color: var(--color8);
+    opacity: 0.04;
+}
+.bar1{
+    height: 10%;
+    top: 30%;
+}
+.bar2{
+    height: 20%;
+    top: 60%;
+}
+.bar3{
+    height: 40%;
+    top: 10%;
+}
+
+/* SKILLS */
+
+.square{
+    position: absolute;
+    background-color: var(--color8);
+    opacity: 0.2;
+    display: block;
+}
+.square1{
+    width: 100px;
+    height: 100px;
+    margin-left: 50%;
+    top: 10%;
+}
+.square2{
+    width: 200px;
+    height: 200px;
+    margin-left: 70%;
+    top: 40%
+}
+.square3{
+    width: 400px;
+    height: 400px;
+    margin-left: 10%;
+    top: 20%;
+}
+
+.skills .wrapper{
+    grid-auto-rows: auto;
+    height: 200vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    position: absolute;
+}
+.skills .skill{
+    display: flex;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 4rem;
+    align-items: center;
+    justify-content: center;
+    /*-webkit-text-shadow: 0px 0px 35px 8px #FFFFFF; */
+    /*text-shadow: 0px 0px 35px 8px #FFFFFF;*/
+    /*text-shadow: 0px 0px 20px #FFFFFF;*/
+    text-shadow: 0px 0px 100px #FFFFFF;
+}
+
+/* PARALAX */
+
+.stars{
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+}
+.paralax{
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(255, 252, 61);
+    box-shadow: var(--gsap-box-shadow);
+}
+ 
+/* BACKGROUND */
+
+.backgrounds{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:left;
+    align-items: stretch;
+    align-content: stretch;
+    /*gap: 2%;*/
+    /*background: orange;*/
+    padding-top: 20px;
+}
+.background{
+    display: block;
+    height: calc(80vh);
+    flex: 2 1 auto;
+    cursor: pointer;
+    display: flex;
+    /*opacity: 0.5;*/
+    overflow-x: hidden;
+    padding: 10px;
+    /*max-width: 25%;*/
+    /*width: 60px;*/
+}
+.background.expanded{
+    cursor: default;
+}
+.background > * {
+    pointer-events: none;
+}
+.background .aside{
+    background: white;
+    width: 2rem;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 5px 0px 10px 0px rgba(0,0,0,0.3); 
+    box-shadow: 5px 0px 10px 0px rgba(0,0,0,0.3);
+}
+.background.expanded .aside{
+    background: var(--color3);
+    color: white;
+}
+.background.expanded .aside h2{
+    color: white;
+}
+.background .label{
+    display: flex;
+    gap: 1rem;
+    transform: rotate(-90deg) translateX(-400px);
+    min-width: 400px;
+    transform-origin: top left;
+    justify-content: end;
+    padding-top: 5px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+.background h2{
+    font-size: 1rem;
+    padding: 0;
+}
+.background .wrapper{
+    overflow-x: hidden;
+    z-index: -1;
+    width: 100%;
+    display: flex;
+    /*background: gray;*/
+    /*transform-origin: left;*/
+}
+.background .content{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    border-radius: 0px 10px 10px 0px;
+    -webkit-box-shadow: 5px 0px 10px 0px rgba(0,0,0,0.3); 
+    box-shadow: 5px 0px 10px 0px rgba(0,0,0,0.3);
+    background-color: #f1f1f1;
+    z-index: -1;
+    padding: 5px 10px;
+    width: 100%;
+    /*white-space: nowrap;*/
+    overflow-x: hidden;
+}
+.background{
+    max-width: 50px;
+}
+.background:first-child{
+    width: 100%;
+    /*max-width: 50px;*/
+}
+.background:not(:first-child){
+    /*max-width: 50px;*/
+}
+/*.background:not(:first-child) .wrapper{
+    transform:scaleX(0);
+}*/
+/*.background:not(:first-child) .content{
+    transform: translateX(-110%);
+}*/
+
+/*.background{
+    max-width: 50px;
+}
+.background .wrapper{
+    transform:scaleX(0);
+}
+.background .content{
+    transform: translateX(-110%);
+}*/
+.backgrounds .tags{
+    border-top: 1px solid gray;
+    color: gray;
+    font-size: 0.8rem;
+}
+.backgrounds .tag:not(:first-child)::before{
+    content: "#";
+    margin: 0 0.5rem;
+}
+
+.background .content .description h3{
+    color: var(--color2);
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}s
+.background .content ul, .background .content li{
+    list-style: disc inside;
+}
+
+
+@media (max-width: 800px) {
+    .backgrounds{
+        flex-direction: column;
+    }
+    .background .content{
+        white-space: normal;
+    }
+}
