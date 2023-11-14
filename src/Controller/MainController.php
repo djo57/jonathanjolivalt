@@ -45,7 +45,7 @@ class MainController extends AbstractController
         $mailer->send($email);
         $send = true;
       } catch (TransportExceptionInterface $e) {
-        echo $e->getDebug();
+        $send = $e->getDebug();
       } 
 
       return new JsonResponse($send);

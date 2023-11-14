@@ -51,9 +51,13 @@ const sendMail = async() => {
         }
         try{
             await fetch("/mail/send", requestOptions)
-            .then(response => response.json())
+            .then(response => {
+                response.json()
+                console.log(response)
+            })
             .then(result => {
                 sent.value = result ? 2 : 3
+                console.log(result)
             })
         } catch(error){
             sent.value = 3
