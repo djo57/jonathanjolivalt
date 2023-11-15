@@ -28,24 +28,22 @@ class MainController extends AbstractController
       return $this->render('app.html.twig');
     }
 
-    #[Route("/mail/send", name: "app_mail", priority: 1, methods: ["POST"])]
+    #[Route("/mail/send", name: "app_mail", priority: 1, methods: ["POST", "GET"])]
     public function sendMail(Request $request, MailerInterface $mailer, ContainerBagInterface $params): JsonResponse
     {
       $send = false;
       $content = $request->toArray();
-
       $email = (new Email())
             ->from($content['email'])
             ->to($params->get('app.mail'))
             ->subject('Message Site Jojo de '. $content['name'] . " - " . $content['phone'])
             ->text($content['description'])
             ->html($content['description']);
-
       try {
         $mailer->send($email);
         $send = true;
       } catch (TransportExceptionInterface $e) {
-        $send = $e->getDebug();
+        $send = false;
       } 
 
       return new JsonResponse($send);

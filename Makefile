@@ -1,8 +1,15 @@
 CONSOLE = php bin/console
 CONSOLE_TEST = php bin/console
 
+server:
+	symfony server:start -d
+	npm run dev-server
+
 prod:
 	yarn run encore production
+
+prod-install:
+	APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear
 
 doctrine-validate:
 	$(CONSOLE) doctrine:schema:validate --skip-sync $c

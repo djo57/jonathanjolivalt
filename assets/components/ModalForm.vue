@@ -51,23 +51,15 @@ const sendMail = async() => {
         }
         try{
             await fetch("/mail/send", requestOptions)
-            .then(response => {
-                response.json()
-                console.log(response)
-            })
-            .then(result => {
-                sent.value = result ? 2 : 3
-                console.log(result)
-            })
+            .then(response => response.json())
+            .then(data => sent.value = data === true ? 2 : 3)
         } catch(error){
             sent.value = 3
-            console.log(error)
         }
     }
 }
 
 watch(sent, () => {
-    console.log(sent.value)
     if(sent.value === 2){
         gsap.to(".modal .content", {
             delay: 1,
