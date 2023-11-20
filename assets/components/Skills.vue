@@ -20,7 +20,7 @@ const getSkills = async() => {
 onMounted(async () => {
     let stars = document.querySelectorAll(".stars")
     stars.forEach((star) => {
-        for(let i=0;i<100;i++){
+        for(let i=0;i<50;i++){
             let {height, width} = star.getBoundingClientRect()
 
             let newDiv = document.createElement("div")
@@ -41,7 +41,6 @@ onMounted(async () => {
             ease: "linear"
         })
     })
-
     await getSkills()
     emit('updateDom', skills.value)
 })
@@ -75,5 +74,14 @@ onMounted(async () => {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ffffff",GradientType=1);
     perspective: 800px;
     perspective-origin: 50% 100%;
+}
+@media only screen and (orientation: portrait){
+    .skills{
+        min-height: 80vh;
+    }
+    .skills .content{
+        min-height: 80vh;
+        /*margin: 51rem 0;*/
+    }
 }
 </style>

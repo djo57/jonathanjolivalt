@@ -1,12 +1,27 @@
 <script setup>
-import {onMounted} from "vue"
+import {ref, onMounted} from "vue"
 import { gsap } from "gsap"
-import hero from '../images/hero.jpg'
+import hero from '../images/jonathanjolivalt.jpg'
 import contact from '../images/contact.svg'
 
-const emit = defineEmits(['showModal'])
+const intro = ref(false)
+const emit = defineEmits(['showModal', 'updateIntro'])
 
-onMounted(() => {
+const getIntro = async() => {
+    try{
+        await fetch("/api/intro/get", {"method": "GET"})
+        .then(response => response.json())
+        .then(result => {
+            intro.value = result
+        })
+    } catch(error){
+        console.log(error)
+    }
+}
+
+onMounted(async () => {
+    await getIntro()
+    emit('updateIntro', intro.value)
     gsap.registerEffect({
         name: "clip",
         defaults:{
@@ -115,7 +130,7 @@ onMounted(() => {
         paddingBottom: 10,
         opacity: 1
     }).to(".hero .introduction",{
-        text: "Développeur PHP depuis 15 ans et Symfony depuis 8 ans je suis capable de m’adapter aux différents environnements dans lesquels j’ai pu travailler. Mon but est de consolider mes connaissances mais aussi d’apprendre de nouveaux langages afin d’élargir mon champ d’application, notamment sur la partie front-end avec ReactJS et VueJS.", 
+        text: intro.value.description, 
         duration: 1,
         opacity: 1,
         ease: "power.in"
@@ -144,21 +159,19 @@ onMounted(() => {
             <div class="me">
                 <img :src=hero alt="Photo of me">
             </div>
-            <div class="intro">
+            <div class="intro" v-if="intro">
                 <ul class="mask">
-                    <li class="bg">Jonathan Jolivalt</li>
-                    <li class="fg">Jonathan Jolivalt</li>
+                    <li class="bg">{{ intro.name }}</li>
+                    <li class="fg">{{ intro.name }}</li>
                 </ul>
-                <h2>Développeur Full-stack</h2>
-                <h3>15 ans d'expérience</h3>
+                <h2>{{ intro.job }}</h2>
+                <h3>{{ intro.title }}</h3>
                 <p class="introduction">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum hendrerit sem, vitae sodales risus venenatis sit amet. Vestibulum nec urna purus. In nec leo et orci tincidunt pretium eu id est.
                 </p>
-                <div class="degree">
+                <div class="degree" v-if="intro.degrees">
                     <ul>
-                        <li>Licence Professionnelle Web et Commerce Electronique, IUT Saulcy, Metz (2006)</li>
-                        <li>DUT Informatique de Gestion, Université de Luxembourg, Limpertsberg (2004)</li>
-                        <li>BAC Scientifique, Lycée St Exupery, Fameck (2001)</li>
+                        <li v-for="degree in intro.degrees">{{ degree }}</li>
                     </ul>
                 </div>
                 <div class="lang">
@@ -177,6 +190,16 @@ onMounted(() => {
 </template>
 
 <style scoped>
+/*.loader-enter-active, 
+.loader-leave-active {
+  transition: opacity 1s ease-out;
+}
+
+.loader-enter-from,
+.loader-leave-to {
+    opacity: 0;
+}*/
+
 #hero-content-sticky{
     width: 400px;
     height: 100px;
@@ -243,6 +266,36 @@ onMounted(() => {
     z-index: 0;
 }
 
+@media only screen and (orientation: portrait){
+    #hero-content-sticky{
+        height: 200px;
+        width: 650px;
+    }
+    #hero-content-sticky .me{
+        width: 200px;
+    }
+    #hero-content-sticky .me img{
+        width: 200px;
+        height: 200px;
+    }
+    #hero-content-sticky .para{
+        height: 150px;
+        margin-left: -40px;
+        margin-top: 25px;
+        line-height: 130px;
+        font-size: 2.4rem!important;
+    }
+    #hero-content-sticky .contact img{
+        width: 128px;
+        height: 128px;
+    }
+    .degree ul{
+        list-style-type: square;
+        list-style-position: inside;
+        margin-bottom: 2rem;
+    }
+}
+
 #hero-wrapper{
     margin-top: -100px;
 }
@@ -277,6 +330,7 @@ onMounted(() => {
     background: linear-gradient(to top, white, transparent);
     z-index: 100;
 }
+
 #hero-content .intro{
     width: 70%;
     /*background: var(--color8);*/
@@ -304,10 +358,11 @@ onMounted(() => {
     font-size: 2rem;
     color: var(--color3);
 }
-.hero p, .hero .para, #hero-content-sticky .para{
+.hero p, .hero .para{
     font-size: 1.2rem;
     color: var(--color4);
 }
+
 #hero-content ul{
     font-size: 1.1rem;
     color: var(--color5);
@@ -325,8 +380,9 @@ onMounted(() => {
     /*padding: 0 20px;*/
     padding-left: 10%;
 }
-#hero-content.lang span{
+#hero-content .lang span{
     margin-right: 10px;
+    padding-right: 10px;
 }
 .hero .contact, #hero-content-sticky .contact{
     cursor: pointer;
@@ -336,6 +392,51 @@ onMounted(() => {
     width: 64px;
     height: 64px;
     vertical-align: middle;
+}
+@media only screen and (orientation: portrait){
+    #hero-wrapper{
+        margin-top: -200px;
+    }
+    #hero-content p, ul{
+        padding: 2rem 0.5rem;
+    }
+    #hero-content h1, h2, h3{
+        padding: 0.5rem;
+    }
+    #hero-content .para{
+        padding: 2rem 0.5rem;
+    }
+    #hero-content .mask{
+        font-size: 9rem;
+    }
+    #hero-content .mask li{
+        font-size: 7rem;
+        padding-left: 1rem;
+    }
+    #hero-content ul{
+        padding: 0.5rem;
+    }
+    #hero-content h2{
+        font-size: 5rem;
+    }
+    #hero-content h3{
+        font-size: 3rem;
+    }
+    .hero .para{
+        font-size: 2.4rem;
+        min-width: 100%;
+    }
+    /*.hero .contact img{
+        width: 128px;
+        height: 128px;
+    }*/
+    #hero-content .lang li{
+        vertical-align: middle;
+    }
+    #hero-content .lang span{
+        font-size: 3rem;
+        margin-right: 2rem;
+    }
 }
 .hero .contact .circle, #hero-content-sticky .circle {
 	/*width:5vmin;
@@ -376,7 +477,10 @@ onMounted(() => {
     grid-area: 1/1;
 }
 
-@media only screen and (min-width: 900px) and (max-width: 1000px) {
+/*@media only screen and (min-width: 900px) and (max-width: 1000px) {
+    body{
+        background-color: red;
+    }
     #hero-content h1, h2, h3, p, ul, .para{
         padding: 1rem;
     }
@@ -398,26 +502,30 @@ onMounted(() => {
     #hero-content ul{
         font-size: 0.8rem;
     }
-}
-@media only screen and (max-width: 900px) {
+}*/
+@media only screen and (orientation: portrait){
+    #hero-content{
+        flex-direction: column;
+    }
     #hero-content .hero {
       flex-direction: column;
     }
     #hero-content .me{
-        width: 100px;
+        width: 100%;
         z-index: 2;
-        position: absolute;
-        display: block;
+        height: 300px;
+        max-height: 300px;
+        min-height: 300px;
+        overflow: hidden;
     }
     #hero-content .me::before{
         display: none;
     }
-    #hero-content .me img{
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        border: 5px solid var(--color3);
-        object-fit:cover;
+    .hero #hero-content .me img{
+        object-position: 50% 20%;
+    }
+    #hero-content .intro {
+        width: 100%;
     }
 }
 </style>

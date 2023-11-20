@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Rejang&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/css/flag-icons.min.css');
 
 :root {
     --color1: #012;
@@ -47,6 +48,9 @@ ul,ol{
 body{
     overflow-x: hidden;
     font-family: 'Noto Sans Rejang', sans-serif;
+}
+body,html{
+    height: 100%;
 }
 section{
     position: relative;
@@ -125,13 +129,20 @@ h1::after{
     opacity: 0.5;
     transform: translateY(10px)
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (orientation: portrait){
+    h1{
+        width: 90%;
+        font-size: 7rem;
+        margin: 3rem 0;
+    }
+}
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
     h1{
         font-size: 4rem;
         width: 500px;
     }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) and (orientation: landscape) {
     h1{
         font-size: 3rem;
         margin-bottom: 50px;
@@ -179,6 +190,11 @@ h2{
     height: 40%;
     top: 10%;
 }
+@media only screen and (orientation: portrait){
+    .bar{
+        display: none;
+    }
+}
 
 /* SKILLS */
 
@@ -218,6 +234,11 @@ h2{
     grid-row-gap: 20px;
     position: absolute;
 }
+@media only screen and (orientation: portrait){
+    .skills .wrapper{
+        height: 80vh;
+    }
+}
 .skills .skill{
     display: flex;
     font-weight: bold;
@@ -225,9 +246,6 @@ h2{
     font-size: 4rem;
     align-items: center;
     justify-content: center;
-    /*-webkit-text-shadow: 0px 0px 35px 8px #FFFFFF; */
-    /*text-shadow: 0px 0px 35px 8px #FFFFFF;*/
-    /*text-shadow: 0px 0px 20px #FFFFFF;*/
     text-shadow: 0px 0px 100px #FFFFFF;
 }
 
@@ -263,7 +281,6 @@ h2{
     padding-top: 20px;
 }
 .background{
-    display: block;
     height: calc(80vh);
     flex: 2 1 auto;
     cursor: pointer;
@@ -290,6 +307,9 @@ h2{
 .background.expanded .aside{
     background: var(--color3);
     color: white;
+}
+.background .aside h2{
+    color: black;
 }
 .background.expanded .aside h2{
     color: white;
@@ -330,6 +350,11 @@ h2{
     width: 100%;
     /*white-space: nowrap;*/
     overflow-x: hidden;
+    background: rgb(6,35,92);
+    background: -moz-linear-gradient(104deg, rgba(6,35,92,0.47102591036414565) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(104deg, rgba(6,35,92,0.47102591036414565) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(104deg, rgba(6,35,92,0.47102591036414565) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#06235c",endColorstr="#ffffff",GradientType=1);
 }
 .background{
     max-width: 50px;
@@ -361,6 +386,8 @@ h2{
     border-top: 1px solid gray;
     color: gray;
     font-size: 0.8rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
 }
 .backgrounds .tag:not(:first-child)::before{
     content: "#";
@@ -371,18 +398,57 @@ h2{
     color: var(--color2);
     font-weight: bold;
     font-size: 1.2rem;
-    margin: 0.5rem 0;
-}s
+    margin: 2rem 0;
+}
 .background .content ul, .background .content li{
-    list-style: disc inside;
+    list-style: square inside;
 }
 
+@media only screen and (orientation: portrait){
+    .backgrounds{
+        flex-direction: column;
+    }
+    .background{
+        height: 100%;
+        display: block;
+        max-width: 100%;
+    }
+    .background .wrapper{
+        display: none;
+    }
+    .background.expanded .wrapper{
+        display: block;
+    }
+    .background .aside{
+        width: 100%;
+        height: 100px;
+    }
+    .background .aside>*{
+        font-size: 2.5rem;
+    }
+    .background .aside h2{
+        font-size: 2.5rem;
+    }
+    .background .label{
+        transform: none;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+    .background .content{
+        margin: 0;
+    }
+    .backgrounds .tags{
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+}
 
-@media (max-width: 800px) {
+/*@media (max-width: 800px) {
     .backgrounds{
         flex-direction: column;
     }
     .background .content{
         white-space: normal;
     }
-}
+}*/

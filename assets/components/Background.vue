@@ -4,6 +4,8 @@ import { gsap } from "gsap"
 
 const backgrounds = ref(false)
 const test = ref()
+var mobile = ref(false)
+const emit = defineEmits(['updateBg'])
 
 const getBackgrounds = async() => {
     try{
@@ -11,8 +13,6 @@ const getBackgrounds = async() => {
         .then(response => response.json())
         .then(result => {
             backgrounds.value = result
-            console.log(backgrounds.value)
-            console.log(JSON.stringify(backgrounds.value[0].description))
         })
     } catch(error){
         console.log(error)
@@ -45,19 +45,28 @@ const leave = (event) => {
     if(!background.classList.contains("expanded")) background.hoverAnimation.reverse()
 }
 
+const isMobile = () => {
+    mobile = window.innerHeight > window.innerWidth;
+}
+
 onMounted(async () => {
+    isMobile()
     await getBackgrounds()
+    emit('updateBg', backgrounds.value)
     const backgroundElements = gsap.utils.toArray(".background")
     backgroundElements.forEach((background, index) => {
+        
         let hoverAnimation = gsap.timeline({
             paused: true
         })
 
         const aside = background.querySelector(".aside") 
-        hoverAnimation.to(aside, {
-            background: "#036",
-            color: "white"
-        })
+        if(!mobile){
+            hoverAnimation.to(aside, {
+                background: "#036",
+                color: "white"
+            })
+        }
         background.hoverAnimation = hoverAnimation
 
         let backgroundAnimation = gsap.timeline({
@@ -68,9 +77,16 @@ onMounted(async () => {
             paused: index === 0 ? false : true
         })
 
-        backgroundAnimation.to(background, {
-            maxWidth: "100%",
-        })
+        if(!mobile){
+            backgroundAnimation.to(background, {
+                maxWidth: "100%",
+            })
+        }
+        /*else{
+            backgroundAnimation.to(background.querySelector(".wrapper"), {
+                display: "block"
+            })
+        }*/
 
         background.backgroundAnimation = backgroundAnimation
     })
@@ -79,7 +95,8 @@ onMounted(async () => {
 <template>
     <div class="sec sec3">
         <h1>Expériences</h1>
-        <div class="content backgrounds">
+        <Transition name="loader">
+        <div class="content backgrounds" :class="[mobile ? 'portrait' : 'landscape']" v-if="backgrounds">
             <div class="background" v-for="(background, index) in backgrounds" :class='index === 0 ? "expanded" : ""' @click="expand" @mouseover="hover" @mouseleave="leave">
                 <div class="aside">
                     <div class="label" :class=background.job>
@@ -98,10 +115,21 @@ onMounted(async () => {
                 </div>
             </div>
         </div>
+        <div class="loader" v-else>...TEST...</div>
+        </Transition>
     </div>
 </template>
 
 <style scoped>
+.loader-enter-active, 
+.loader-leave-active {
+  transition: opacity 1s ease-out;
+}
+
+.loader-enter-from,
+.loader-leave-to {
+    opacity: 0;
+}
 .background .content .job{
     color: var(--color4);
     font-weight: bold;

@@ -33,7 +33,7 @@ const rules = {
         alphaNum:helpers.withMessage("Cet numéro n'est pas valide, ex: +33611223344 sans espaces", alphaNum)  
     },
     description: {
-        required:helpers.withMessage('Veuillez laissez un message', required)
+        required:helpers.withMessage('Veuillez laisser un message', required)
     }
 }
 
@@ -138,7 +138,7 @@ const leave = (event) => {
                     <div>
                         <Transition name="sendmail">
                             <input v-if="sent === 0 || sent === 3" type="submit" value="Envoyer le message" class="button" @mouseover="hover" @mouseleave="leave" />
-                            <div v-else-if="sent === 1">Envoi en cours...</div>
+                            <div v-else-if="sent === 1" class="pending">Envoi en cours...</div>
                             <div v-else-if="sent === 2" class="ok">Message envoyé</div>
                         </Transition>
                         <div v-if="sent === 3" class="error">Erreur d'envoi</div>
@@ -211,5 +211,21 @@ textarea{
     opacity: 0;
     height: 0;
     line-height: 0;
+}
+
+@media only screen and (orientation: portrait){
+    .content{
+        width: 90%;
+    }
+    input, textarea, .error, .ok, .pending{
+        font-size: 2.5rem;
+    }
+    textarea{
+        min-height: 500px;
+    }
+    .close{
+        font-size: 12rem;
+        margin-top: -5rem;
+    }
 }
 </style>

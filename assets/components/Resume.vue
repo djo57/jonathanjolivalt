@@ -1,8 +1,25 @@
 <script setup>
-import {onMounted} from "vue"
+import {ref, onMounted} from "vue"
 import { gsap } from "gsap"
 
-onMounted(() => {
+const resumes = ref(false)
+const emit = defineEmits(['updateResume'])
+
+const getResume = async() => {
+    try{
+        await fetch("/api/resume/get", {"method": "GET"})
+        .then(response => response.json())
+        .then(result => {
+            resumes.value = result
+        })
+    } catch(error){
+        console.log(error)
+    }
+}
+
+onMounted(async () => {
+    await getResume()
+    emit('updateResume', resumes.value)
     let boxes = gsap.utils.toArray(".boxes .box")
     var position = 0
 
@@ -46,40 +63,10 @@ onMounted(() => {
             <div class="square square1"></div>
             <div class="square square2"></div>
             <div class="square square3"></div>
-            <div class="box">
-                <h4>Compétences</h4>
+            <div class="box" v-for="title, name in resumes">
+                <h4>{{ name }}</h4>
                 <ul>
-                    <li>Développement backend avec PHP 8, Symfony 6, MySQL</li>
-                    <li>Développement frontend avec ReactJS, VueJS, JavaScript, Jquery, Ajax, CSS, HTML</li>
-                    <li>API Restful avec API Platform</li>
-                    <li>Webservice SOAP</li>
-                    <li>Intégration continue CI/CD</li>
-                    <li>Documentation</li>
-                    <li>Identification des besoins</li>
-                    <li>Formation des utilisateurs</li>
-                </ul>
-            </div>
-            <div class="box">
-                <h4>Projets</h4>
-                <ul>
-                    <li>Création d'une page de gestion des tournées des chauffeurs Chronopost</li>
-                    <li>Création d’une tâche qui calcul les tournées des chauffeurs via un webservice SOAP</li>
-                    <li>Maintenance d’un système d’import/export de données</li>
-                    <li>Maintenance d’un système de contrôle de température et de suivi des colis</li>
-                    <li>Création et refonte de sites web</li>
-                    <li>Installation, configuration et gestion de CMS / boutiques en ligne</li>
-                </ul>
-            </div>
-            <div class="box">
-                <h4>Sociétés</h4>
-                <ul>
-                    <li>CTIE - Centre des technologies de l'information de l'état (Consultant 5 ans)</li>
-                    <li>Chronopost / Biologistic (Consultant 4 ans)</li>
-                    <li>Netline (CDI 3 ans)</li>
-                    <li>Markeasy (CDI 2 ans)</li>
-                    <li>Nvision (CDD 6 mois)</li>
-                    <li>WORT (Consultant 3 mois)</li>
-                    <li>Inverto (CDD 1 mois)</li>
+                    <li v-for="resume in title">{{ resume }}</li>
                 </ul>
             </div>
         </div>
@@ -153,7 +140,20 @@ onMounted(() => {
     border-radius: var(--gsap-border-radius);
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (orientation: portrait){
+    .boxes {
+      flex-direction: column;
+      padding: 0 10px;
+    }
+    .boxes .box li:not(:last-child):after{
+        width: 48px;
+        height: 48px;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/*@media only screen and (max-width: 1200px) {
     .boxes .box {
         margin-left: 10px;
         margin-right: 10px;
@@ -168,5 +168,5 @@ onMounted(() => {
         margin: 10px;
         margin-bottom: 50px;
     }
-}
+}*/
 </style>

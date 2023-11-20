@@ -14,19 +14,17 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class MainController extends AbstractController
 {
-    /*#[Route('/', name: 'app_main')]
+    #[Route('/', name: 'app_main')]
     public function index(): Response
-    {
-        return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
-    }*/
-
-    #[Route('/{slug?}', name: 'app', requirements: ["slug" => ".+"])]
-    public function app(): Response
     {
       return $this->render('app.html.twig');
     }
+
+    /*#[Route('/{slug?}', name: 'app', requirements: ["slug" => ".+"])]
+    public function app(): Response
+    {
+      return $this->render('app.html.twig');
+    }*/
 
     #[Route("/mail/send", name: "app_mail", priority: 1, methods: ["POST", "GET"])]
     public function sendMail(Request $request, MailerInterface $mailer, ContainerBagInterface $params): JsonResponse
@@ -49,11 +47,59 @@ class MainController extends AbstractController
       return new JsonResponse($send);
     }
 
+    #[Route("/api/intro/get", name: "api_intro", priority: 1, methods: ["GET"])]
+    public function apiGetIntro(): JsonResponse
+    {
+      return new JsonResponse([
+        "name" => "Jonathan Jolivalt",
+        "job" => "Développeur Full-stack",
+        "title" => "15 ans d'expérience",
+        "description" => "Besoin d'un site web ? D'une boutique en ligne ? D'un système d'administration ? D'une API ? J'ai décidé de me lancer dans l'aventure Freelance afin de mettre mes compétences à votre service. N'hésitez pas à me contacter via le formulaire de contact ou via Linkedin.",
+        "degrees" => [
+          "Licence Professionnelle Web et Commerce Electronique, IUT Saulcy, Metz (2006)",
+          "DUT Informatique de Gestion, Université de Luxembourg, Limpertsberg (2004)",
+          "BAC Scientifique, Lycée St Exupery, Fameck (2001)"
+        ]
+      ]);
+    }
+
+    #[Route("/api/resume/get", name: "api_resume", priority: 1, methods: ["GET"])]
+    public function apiGetResume(): JsonResponse
+    {
+      return new JsonResponse([
+        "Compétences" => [
+          "Développement backend avec PHP 8, Symfony 6, MySQL",
+          "Développement frontend avec ReactJS, VueJS 3, JS, Jquery, Ajax, CSS 3, HTML 5, Responsive Design",
+          "API Restful avec API Platform",
+          "Webservice SOAP",
+          "Intégration continue CI/CD",
+          "Identification des besoins, documentation et formation des utilisateurs"
+        ],
+        "Projets" => [
+          "Création d'une page de gestion des tournées des chauffeurs Chronopost",
+          "Création d’une tâche qui calcul les tournées des chauffeurs via un webservice SOAP",
+          "Maintenance d’un système d’import/export de données",
+          "Maintenance d’un système de contrôle de température et de suivi des colis",
+          "Création et refonte de sites web",
+          "Installation, configuration et gestion de CMS / boutiques en ligne"
+        ],
+        "Sociétés" => [
+          "CTIE - Centre des technologies de l'information de l'état (Consultant 5 ans)",
+          "Chronopost / Biologistic (Consultant 4 ans)",
+          "Netline (CDI 3 ans)",
+          "Markeasy (CDI 2 ans)",
+          "Nvision (CDD 6 mois)",
+          "WORT (Consultant 3 mois)",
+          "Inverto (CDD 1 mois)"
+        ]
+      ]);
+    }
+
     #[Route("/api/skills/get", name: "api_skills", priority: 1, methods: ["GET"])]
     public function apiGetSkills(): JsonResponse
     {
       return new JsonResponse([
-        "PHP 8", "Vue 3", "Symfony 6", "HTML 5", "CSS 3", "Javascript", "Docker", "React", "MySQL", "Gsap 3", "Ajax", "Bootstrap", "API Rest", "Soap", "Tailwind", "JQuery", "Ajax", "Windows", "Ubuntu", "Twig", "VScode", "Netbeans", "Jira", "Trello", "Git", "GitLab", "SVN", "GitExt", "Agile", "Kanban", "AWS", "EC2", "SES"
+        "PHP 8", "Vue 3", "Symfony 6", "HTML 5", "CSS 3", "Javascript", "Docker", "React", "MySQL", "Gsap 3", "Ajax", "Bootstrap", "API Rest", "Soap", "Tailwind", "JQuery", "Ajax", "Windows", "Ubuntu", "Twig", "VScode", "Netbeans", "Jira", "Trello", "Git", "GitLab", "SVN", "GitExt", "Agile", "Kanban", "AWS", "EC2", "SES", "Responsive"
       ]);
     }
 
@@ -62,11 +108,26 @@ class MainController extends AbstractController
     {
       return new JsonResponse([
         [
-          "job" => "Autoformation",
-          "date" => "06/2022 – " . date("m/Y"),
-          "company" => "Congé parental",
+          "job" => "Full-stack Dev",
+          "date" => "11/2023 – " . date("m/Y"),
+          "company" => "Freelance",
           "description" => "<h3>Projet 1</h3>
-          <p>Création de sites web
+          <p>Ce site ^^
+          <ul>
+          <li>Animations avec Gsap 3</li>
+          <li>Front-end VueJS 3</li>
+          <li>Back-end (API) Symfony 6</li>
+          <li>Serveur Amazon AWS EC2</li>
+          </ul>
+          </p>",
+          "environment" => ["PHP 8", "Symfony 6", "MySQL", "AWS", "EC2", "SES", "Ubuntu", "GIT", "IDE VScode"]
+        ],
+        [
+          "job" => "Congé parental / Année sabbatique",
+          "date" => "06/2022 – 10/2023",
+          "company" => "Autoformation",
+          "description" => "<h3>Projet 1</h3>
+          <p>React
           <ul>
           <li>Maintenance et ajout de fonctionnalités sur la partie gestion des congés et gestion des articles de presse</li>
           <li>Rendre responsive le système d’administration avec Bootstrap</li>
