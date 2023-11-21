@@ -8,6 +8,9 @@ server:
 prod:
 	yarn run encore production
 
+push:
+	git push -u origin main
+
 prod-install:
 	APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear
 

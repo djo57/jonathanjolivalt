@@ -20,12 +20,12 @@ const getSkills = async() => {
 onMounted(async () => {
     let stars = document.querySelectorAll(".stars")
     stars.forEach((star) => {
-        for(let i=0;i<50;i++){
+        for(let i=0;i<20;i++){
             let {height, width} = star.getBoundingClientRect()
 
             let newDiv = document.createElement("div")
             newDiv.classList.add("paralax")
-            const size = Math.random() * 10
+            const size = Math.random() * 20
             newDiv.style.height = size+"px"
             newDiv.style.width = size+"px"
             newDiv.style.marginLeft = (Math.random() * width - 10) + "px"

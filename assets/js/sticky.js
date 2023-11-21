@@ -2,6 +2,7 @@ import { gsap } from "gsap"
 import { Flip } from "gsap/Flip";
 
 import globalContext from "./global"
+import { faTemperatureUp } from "@fortawesome/free-solid-svg-icons";
 
 const flipStickyHeader = (show, flipAnimation = true) => {
     if(show){
@@ -33,7 +34,11 @@ const flipStickyHeader = (show, flipAnimation = true) => {
     stickyHeader.style.display = "flex"
     stickyImg.appendChild(heroImg)
 
-    if(state){
+    const stickyTimeline = gsap.timeline({ 
+        defaults: { duration: 1 }
+    })
+
+    if(state && heroImg.style.opacity != 0){
         Flip.from(state, {
             duration: 0.5,
             ease: "power1",
@@ -41,9 +46,8 @@ const flipStickyHeader = (show, flipAnimation = true) => {
         })
     }
     else{
-        gsap.to(stickyHeader, {
+        stickyTimeline.to(stickyHeader, {
             opacity: 1,
-            duration: 2,
             delay: 2,
         })
     }
@@ -55,7 +59,7 @@ const flipStickyHeader = (show, flipAnimation = true) => {
 
     stickyContact.appendChild(heroContact)
 
-    if(state){
+    if(state2){
         Flip.from(state2, {
             duration: 0.5,
             ease: "power1",
@@ -63,6 +67,7 @@ const flipStickyHeader = (show, flipAnimation = true) => {
             scale: true
         })
     }
+    globalContext.firstLoad = false
 }
 
 const buildStickyHeader = (show, flipAnimation = true) => {
@@ -101,7 +106,6 @@ const setStickyHeader = (progress) => {
         globalContext.stickyHeader = false
         buildStickyHeader(globalContext.stickyHeader)
     }
-    globalContext.firstLoad = false
 }
 
 export {setStickyHeader}

@@ -66,7 +66,7 @@ onMounted(async () => {
             <div class="box" v-for="title, name in resumes">
                 <h4>{{ name }}</h4>
                 <ul>
-                    <li v-for="resume in title">{{ resume }}</li>
+                    <li v-for="resume, index in title">{{ resume }}<span class="delimiter" v-if="index < title.length - 1"></span></li>
                 </ul>
             </div>
         </div>
@@ -128,7 +128,7 @@ onMounted(async () => {
     padding-top: 0.5rem;
     text-align: center;
 }
-.boxes .box li:not(:last-child):after{
+.boxes .box li .delimiter{
     width: 16px;
     height: 16px;
     content: "";
@@ -145,28 +145,11 @@ onMounted(async () => {
       flex-direction: column;
       padding: 0 10px;
     }
-    .boxes .box li:not(:last-child):after{
+    .boxes .box li .delimiter{
         width: 48px;
         height: 48px;
         margin-top: 2rem;
         margin-bottom: 2rem;
     }
 }
-
-/*@media only screen and (max-width: 1200px) {
-    .boxes .box {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-}
-@media only screen and (max-width: 800px) {
-    .boxes {
-      flex-direction: column;
-      padding: 0 10px;
-    }
-    .boxes .box {
-        margin: 10px;
-        margin-bottom: 50px;
-    }
-}*/
 </style>
