@@ -238,8 +238,7 @@ export default {
                 scrollTrigger: {
                     trigger: ".backgrounds",
                     start: "top 80%",
-                    end: "+=99999",
-                    toggleActions: "restart reverse restart reverse"
+                    end: "+=99999"
                 }
             })
             this.checkScroller()
