@@ -121,8 +121,9 @@ onMounted(async () => {
         opacity: 1
     }).from(".hero .introduction", {
         scale: 0.5
-    }).from(".hero .degree li, .hero .lang li", {   
-        stagger:0.1
+    }).from(".social li, .hero .degree li, .hero .lang li", {   
+        stagger:0.1,
+        translateX: -50
     }).from(".hero .contact", {
         opacity: 0,
         scale:0.1
@@ -178,6 +179,11 @@ onMounted(async () => {
                     <ul>
                         <li><span class="fi fi-fr"></span>Français, courant</li>
                         <li><span class="fi fi-gb"></span>Anglais, B1</li>
+                    </ul>
+                </div>
+                <div class="social">
+                    <ul>
+                        <li v-for="link in intro.social"><a :href="link.link" class="link.class" target="_blank">{{ link.html }}</a></li>
                     </ul>
                 </div>
                 <div class="para contact" @click="$emit('showModal')">
@@ -384,6 +390,12 @@ onMounted(async () => {
     margin-right: 10px;
     padding-right: 10px;
 }
+#hero-content .social a{
+    text-decoration: none;
+    color: var(--color5);
+    background: url("../images/linkedin.svg") no-repeat;
+    padding-left: 34px;
+}
 .hero .contact, #hero-content-sticky .contact{
     cursor: pointer;
     width: fit-content;
@@ -436,6 +448,12 @@ onMounted(async () => {
     #hero-content .lang span{
         font-size: 3rem;
         margin-right: 2rem;
+    }
+    #hero-content .social{
+        margin-top: 2rem;
+    }
+    #hero-content .social a{
+        padding-left: 5.8rem;
     }
 }
 .hero .contact .circle, #hero-content-sticky .circle {

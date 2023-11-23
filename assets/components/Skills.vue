@@ -20,7 +20,7 @@ const getSkills = async() => {
 onMounted(async () => {
     let stars = document.querySelectorAll(".stars")
     stars.forEach((star) => {
-        for(let i=0;i<20;i++){
+        for(let i=0;i<15;i++){
             let {height, width} = star.getBoundingClientRect()
 
             let newDiv = document.createElement("div")

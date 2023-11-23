@@ -54,6 +54,10 @@ onMounted(async () => {
     await getBackgrounds()
     emit('updateBg', backgrounds.value)
     const backgroundElements = gsap.utils.toArray(".background")
+    let maxHeight = 400
+    backgroundElements.forEach((background) => {
+        maxHeight = background.offsetHeight > maxHeight ? background.offsetHeight : maxHeight
+    })
     backgroundElements.forEach((background, index) => {
         
         let hoverAnimation = gsap.timeline({
@@ -78,6 +82,10 @@ onMounted(async () => {
         })
 
         if(!mobile){
+            background.style.maxWidth = "50px"
+            gsap.set(background, {
+                height: maxHeight,
+            })
             backgroundAnimation.to(background, {
                 maxWidth: "100%",
             })
@@ -92,6 +100,11 @@ onMounted(async () => {
                 height: oh,
                 minHeight: oh,
                 ease: "power",
+            })
+        }
+        if(!mobile){
+            gsap.set(".backgrounds", {
+                flexDirection: "row",
             })
         }
 
@@ -112,9 +125,11 @@ onMounted(async () => {
                 </div>
                 <div class="wrapper">
                     <div class="content">
-                        <div class="job">{{ background.job }}</div>
-                        <span class="description" v-html=(background.description)></span>
-                        <div class="tags">
+                        <div>
+                            <div class="job">{{ background.job }}</div>
+                            <span class="description" v-html=(background.description)></span>
+                        </div>
+                        <div class="tags" v-if="background.environment">
                             <span class="tag" v-for="tag in background.environment">{{ tag }}</span>
                         </div>
                     </div>
@@ -127,9 +142,13 @@ onMounted(async () => {
 <style scoped>
 /* BACKGROUND */
 
+/*.sec3{
+    overflow-x: visible;
+}*/
 .backgrounds{
     display: flex;
-    flex-direction: row;
+    /*flex-direction: row;*/
+    flex-direction: column;
     flex-wrap: nowrap;
     justify-content:left;
     align-items: stretch;
@@ -139,16 +158,24 @@ onMounted(async () => {
     padding-top: 20px;
 }
 .background{
-    height: calc(80vh);
+    /*height: calc(80vh);*/
+    /*min-height: 80vh;*/
+    /*max-height: 100vh;*/
     flex: 2 1 auto;
     cursor: pointer;
     display: flex;
     /*opacity: 0.5;*/
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     padding: 10px;
+    max-width: 50%;
     /*max-width: 25%;*/
     /*width: 60px;*/
+    /*max-width: 50px;*/
+    min-height: 400px;
 }
+/*.background.mw{
+    max-width: 50px;
+}*/
 .background.expanded{
     cursor: default;
 }
@@ -188,7 +215,8 @@ onMounted(async () => {
     padding: 0;
 }
 .background .wrapper{
-    overflow-x: hidden;
+    overflow-y: hidden;
+    /*overflow-x: hidden;*/
     z-index: -1;
     width: 100%;
     display: flex;
@@ -206,6 +234,9 @@ onMounted(async () => {
     z-index: -1;
     padding: 5px 10px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     /*white-space: nowrap;*/
     overflow-x: hidden;
     background: rgb(6,35,92);
@@ -214,9 +245,9 @@ onMounted(async () => {
     background: linear-gradient(104deg, rgba(6,35,92,0.47102591036414565) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#06235c",endColorstr="#ffffff",GradientType=1);
 }
-.background{
+/*.background{
     max-width: 50px;
-}
+}*/
 /*.background:first-child{
     width: 100%;
 }*/
@@ -251,13 +282,13 @@ onMounted(async () => {
     margin: 0 0.5rem;
 }
 
-.background .content .description h3{
+.background .content .description >>> h3{
     color: var(--color2);
     font-weight: bold;
     font-size: 1.2rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
-.background .content ul, .background .content li{
+.background .description >>> ul, .background .description >>> li {
     list-style: square inside;
 }
 .background .content .job{
@@ -275,6 +306,10 @@ onMounted(async () => {
         height: 100%;
         display: block;
         max-width: 100%;
+        min-height: 0;
+        /*overflow-x: hidden;*/
+        /*overflow: hidden;*/
+        /*min-height: 0;*/
     }
     /*.background .wrapper{
         display: none;
@@ -297,10 +332,19 @@ onMounted(async () => {
         justify-content: space-between;
         padding: 1rem 2rem;
     }
+    /*.background .wrapper{
+        overflow: hidden;
+    }*/
     .background .content{
         margin: 0;
         font-size: 1rem;
+        /*font-size: 2.5rem;*/
+        /*overflow-x: hidden;*/
     }
+    /*.background .content > *{
+        font-size: 2.5em;
+        display: block;
+    }*/
     .backgrounds .tags{
         font-size: 0.9rem;
         margin-top: 1rem;

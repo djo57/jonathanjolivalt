@@ -59,6 +59,13 @@ class MainController extends AbstractController
           "Licence Professionnelle Web et Commerce Electronique, IUT Saulcy, Metz (2006)",
           "DUT Informatique de Gestion, Université de Luxembourg, Limpertsberg (2004)",
           "BAC Scientifique, Lycée St Exupery, Fameck (2001)"
+        ],
+        "social" => [
+            [
+              "class" => "linkedin",
+              "link" => "https://www.linkedin.com/in/jonathan-jolivalt-009b101b/",
+              "html" => "Mon profil Linkedin"
+            ],
         ]
       ]);
     }
@@ -73,6 +80,7 @@ class MainController extends AbstractController
           "API Restful avec API Platform",
           "Webservice SOAP",
           "Intégration continue CI/CD",
+          "Moteur de recherche Exalead",
           "Identification des besoins, documentation et formation des utilisateurs"
         ],
         "Projets" => [
@@ -99,7 +107,7 @@ class MainController extends AbstractController
     public function apiGetSkills(): JsonResponse
     {
       return new JsonResponse([
-        "PHP 8", "Vue 3", "Symfony 6", "HTML 5", "CSS 3", "Javascript", "Docker", "React", "MySQL", "Gsap 3", "Ajax", "Bootstrap", "API Rest", "Soap", "Tailwind", "JQuery", "Ajax", "Windows", "Ubuntu", "Twig", "VScode", "Netbeans", "Jira", "Trello", "Git", "GitLab", "SVN", "GitExt", "Agile", "Kanban", "AWS", "EC2", "SES", "Responsive"
+        "PHP8", "Vue3", "Symfony6", "HTML5", "CSS3", "Javascript", "Docker", "React", "MySQL", "Gsap3", "Ajax", "Bootstrap", "API Rest", "Soap", "Tailwind", "JQuery", "Ajax", "Windows", "Ubuntu", "Twig", "VScode", "Netbeans", "Jira", "Trello", "Git", "GitLab", "SVN", "GitExt", "Agile", "Kanban", "AWS", "EC2", "SES", "Responsive", "Exalead"
       ]);
     }
 
@@ -111,8 +119,8 @@ class MainController extends AbstractController
           "job" => "Full-stack Dev",
           "date" => "11/2023 – " . date("m/Y"),
           "company" => "Freelance",
-          "description" => "<h3>Projet 1</h3>
-          <p>Ce site ^^
+          "description" => "<h3>Projet</h3>
+          <p>Ce site 
           <ul>
           <li>Animations avec Gsap 3</li>
           <li>Front-end VueJS 3</li>
@@ -126,14 +134,24 @@ class MainController extends AbstractController
           "job" => "Congé parental / Année sabbatique",
           "date" => "06/2022 – 10/2023",
           "company" => "Autoformation",
+          "description" => "<h3>Projet</h3><p>Symfony 6 (EasyAdmin, Symfony UX), PHP 8, TailwindCSS</p>",
+          "environment" => false
+        ],
+        [
+          "job" => "Analyste programmeur PHP – IKE",
+          "date" => "02/2022 – 05/2022",
+          "company" => "IKE – Luxembourg",
           "description" => "<h3>Projet 1</h3>
-          <p>React
-          <ul>
-          <li>Maintenance et ajout de fonctionnalités sur la partie gestion des congés et gestion des articles de presse</li>
-          <li>Rendre responsive le système d’administration avec Bootstrap</li>
-          </ul>
-          </p>",
-          "environment" => ["PHP 7.2", "MySQL", "Linux", "Docker", "GIT", "Gitlab CI-CD", "gestion de tickets avec Trello", "IDE VScode"]
+          <p>Formation sur ReactJS, NodeJS, ExpressJS, Webpack, Babel, Hooks React, tests via
+          Jest, templates EJS</p>
+          <h3>Projet 2</h3>
+          <p>Formation backend sur Symfony 5/6 (Symfony CLI, Maker, Doctrine, Fixtures, Profiler,
+          FormEvents, Validators, HTTPClient, API restful, Security, PHPUnit, Twig), PHP 8, MySQL, Linux</p>
+          <h3>Projet 3</h3>
+          <p>Formation sur API Platform avec Symfony (Securité JWT avec lexik-jwt-authetication-bundle)</p>
+          <h3>Projet 4</h3>
+          <p>Maintenance et gestion des systèmes d’administration développés en interne (PHP5/PHP7)</p>",
+          "environment" => false
         ],
         [
           "job" => "Analyste programmeur PHP – WORT",

@@ -177,6 +177,7 @@ h2{
     width: 100%;
     background-color: var(--color8);
     opacity: 0.04;
+    pointer-events: none;
 }
 .bar1{
     height: 10%;
