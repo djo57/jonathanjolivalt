@@ -544,6 +544,7 @@ onMounted(async () => {
     }
     #hero-content .intro {
         width: 100%;
+        padding-bottom: 5rem;
     }
 }
 </style>

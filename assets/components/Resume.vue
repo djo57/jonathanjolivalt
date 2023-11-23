@@ -144,6 +144,7 @@ onMounted(async () => {
     .boxes {
       flex-direction: column;
       padding: 0 10px;
+      padding-bottom: 5rem;
     }
     .boxes .box li .delimiter{
         width: 48px;

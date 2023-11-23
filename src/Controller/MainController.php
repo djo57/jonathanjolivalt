@@ -107,7 +107,7 @@ class MainController extends AbstractController
     public function apiGetSkills(): JsonResponse
     {
       return new JsonResponse([
-        "PHP8", "Vue3", "Symfony6", "HTML5", "CSS3", "Javascript", "Docker", "React", "MySQL", "Gsap3", "Ajax", "Bootstrap", "API Rest", "Soap", "Tailwind", "JQuery", "Ajax", "Windows", "Ubuntu", "Twig", "VScode", "Netbeans", "Jira", "Trello", "Git", "GitLab", "SVN", "GitExt", "Agile", "Kanban", "AWS", "EC2", "SES", "Responsive", "Exalead"
+        "PHP8", "Vue3", "Symfony6", "EasyAdmin", "React", "MySQL", "Gsap3", "HTML5", "CSS3", "Javascript", "Docker", "Ajax", "Bootstrap", "API Rest", "Soap", "Tailwind", "JQuery", "Ajax", "Windows", "Ubuntu", "Twig", "VScode", "Netbeans", "Jira", "Trello", "Git", "GitLab", "SVN", "GitExt", "Agile", "Kanban", "AWS", "EC2", "SES", "Responsive", "Exalead", "Cheetahmail"
       ]);
     }
 
@@ -131,10 +131,14 @@ class MainController extends AbstractController
           "environment" => ["PHP 8", "Symfony 6", "MySQL", "AWS", "EC2", "SES", "Ubuntu", "GIT", "IDE VScode"]
         ],
         [
-          "job" => "Congé parental / Année sabbatique",
+          "job" => "Autoformation / TOEIC / 2ème congé parental",
           "date" => "06/2022 – 10/2023",
           "company" => "Autoformation",
-          "description" => "<h3>Projet</h3><p>Symfony 6 (EasyAdmin, Symfony UX), PHP 8, TailwindCSS</p>",
+          "description" => "<h3>Projet</h3>
+          <p>Symfony 6 (EasyAdmin, Symfony UX), PHP 8, TailwindCSS</p>
+          <h3>Projet 2</h3>
+          <p>Formation d'anglais et passage du TOEIC avec obtention du niveau B1</p>
+          ",
           "environment" => false
         ],
         [
@@ -154,11 +158,11 @@ class MainController extends AbstractController
           "environment" => false
         ],
         [
-          "job" => "Analyste programmeur PHP – WORT",
+          "job" => "Analyste programmeur PHP (Consultant IKE)",
           "date" => "10/2021 – 01/2022",
-          "company" => "IKE – Luxembourg",
-          "description" => "<h3>Projet 1</h3>
-          <p>Création de sites web
+          "company" => "WORT - Full remote",
+          "description" => "<h3>Projets</h3>
+          <p>
           <ul>
           <li>Maintenance et ajout de fonctionnalités sur la partie gestion des congés et gestion des articles de presse</li>
           <li>Rendre responsive le système d’administration avec Bootstrap</li>
@@ -167,9 +171,16 @@ class MainController extends AbstractController
           "environment" => ["PHP 7.2", "MySQL", "Linux", "Docker", "GIT", "Gitlab CI-CD", "gestion de tickets avec Trello", "IDE VScode"]
         ],
         [
-          "job" => "Analyste programmeur PHP / Symfony – Biologistic (Chronopost)",
+          "job" => "",
+          "date" => "04/2021 – 09/2021",
+          "company" => "Congé parental",
+          "description" => "<h3>Congé parental à temps plein</h3>",
+          "environment" => false
+        ],
+        [
+          "job" => "Analyste programmeur PHP / Symfony (Consultant IKE)",
           "date" => "12/2017 – 03/2021",
-          "company" => "IKE – Luxembourg",
+          "company" => "Biologistic (Chronopost) - Foetz",
           "description" => "<h3>Projet 1</h3>
           <p>Maintenance du back-office historique en collaboration avec 6 développeurs sur Paris.</p>
           <p>
@@ -209,9 +220,9 @@ class MainController extends AbstractController
           VirtualBox", "IDE Netbeans"]
         ],
         [
-          "job" => "Analyste programmeur NPS Infopark / PHP / Symfony – CTIE",
+          "job" => "Analyste programmeur NPS Infopark / PHP / Symfony – CTIE (Consultant IKE)",
           "date" => "10/2012 – 12/2017",
-          "company" => "IKE - Luxembourg",
+          "company" => "CTIE - Luxembourg",
           "description" => "<h3>Projet 1</h3>
           <p>Refonte et maintenance des sites web de l’état dans le CMS NPS propre au CTIE.</p>
           <p>
@@ -282,7 +293,7 @@ class MainController extends AbstractController
           "job" => "Développeur web",
           "date" => "01/2007 – 06/2007",
           "company" => "Nvision - Steinsel",
-          "description" => "<h3>Projet 1</h3>
+          "description" => "<h3>Projets</h3>
           <p>Création de sites web
           <ul>
           <li>Découpage et intégration de design en HTML, CSS et JS</li>

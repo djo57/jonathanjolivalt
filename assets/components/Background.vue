@@ -153,8 +153,6 @@ onMounted(async () => {
     justify-content:left;
     align-items: stretch;
     align-content: stretch;
-    /*gap: 2%;*/
-    /*background: orange;*/
     padding-top: 20px;
 }
 .background{
@@ -319,13 +317,16 @@ onMounted(async () => {
     }*/
     .background .aside{
         width: 100%;
-        height: 100px;
+        min-height: 100px;
     }
     .background .aside>*{
         font-size: 2.5rem;
     }
     .background .aside h2{
         font-size: 2.5rem;
+    }
+    .background .aside .date{
+        min-width: 350px;
     }
     .background .label{
         transform: none;
