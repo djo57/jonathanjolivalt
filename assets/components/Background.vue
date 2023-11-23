@@ -194,14 +194,17 @@ onMounted(async () => {
 .background .aside h2{
     color: black;
 }
+.background .aside .date{
+    min-width: 150px;
+}
 .background.expanded .aside h2{
     color: white;
 }
 .background .label{
     display: flex;
     gap: 1rem;
-    transform: rotate(-90deg) translateX(-400px);
-    min-width: 400px;
+    transform: rotate(-90deg) translateX(-450px);
+    min-width: 450px;
     transform-origin: top left;
     justify-content: end;
     padding-top: 5px;
@@ -295,7 +298,6 @@ onMounted(async () => {
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
 }
-
 @media only screen and (orientation: portrait){
     .backgrounds{
         flex-direction: column;
