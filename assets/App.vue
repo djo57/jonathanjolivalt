@@ -25,8 +25,9 @@ export default {
     const modal = ref(false)
     const scroller = ref(false)
     const loader = ref(true)
+    let mm = gsap.matchMedia()
     return {
-        skills, modal, backgrounds, intro, resumes, scroller, loader
+        skills, modal, backgrounds, intro, resumes, scroller, loader, mm
     }
   },
   watch:{
@@ -162,15 +163,52 @@ export default {
             })
 
             const skillsElement = document.querySelector(".skills .content")
+            this.mm.add({
+                isMobile: "(orientation: portrait)",
+                isDesktop: "(orientation: landscape)",
+            }, (context) => {
+                let { isDesktop, isMobile } = context.conditions
+                if(isMobile){
+                    gsap.set(skillsElement, {
+                        perspectiveOrigin: "50% 100%"
+                    })
+                    gsap.to(skillsElement, {
+                        perspectiveOrigin: "50% 0%",
+                        scrollTrigger:{
+                            trigger: skillsElement,
+                            start: "20% 80%",
+                            end: "80% -40%",
+                            scrub: 2,
+                        }
+                    })
+                }
+                else if(isDesktop){
+                    gsap.set(skillsElement, {
+                        perspectiveOrigin: "50% 70%"
+                    })
+                    gsap.to(skillsElement, {
+                        perspectiveOrigin: "50% 30%",
+                        scrollTrigger:{
+                            trigger: skillsElement,
+                            start: "top 10%",
+                            end: "90% 100%",
+                            scrub: 2
+                        }
+                    })
+                }
+            })
 
+            const grid = 9
             var currentWrapper = false
             var currentPos = 0
-            datas.forEach((data, index) => {
+            var z = Math.ceil(datas.length / grid)
 
-                if(!currentWrapper || index % 9 === 0){
+            datas.forEach((data, index) => {
+                if(!currentWrapper || index % grid === 0){
                     currentPos++
                     let wrapperElement = document.createElement("div")
                     wrapperElement.classList.add("wrapper", "wrapper"+(currentPos))
+                    wrapperElement.style.zIndex = z - index
                     if(currentWrapper){
                         wrapperElement.classList.add("wrapperZ")
                         gsap.set(wrapperElement, {
@@ -197,9 +235,9 @@ export default {
                         "25%":{ opacity: 1},
                         "50%":{
                             textShadow: "0px 0px 100px #FFFFFF", 
-                            marginLeft: () => { 
+                            /*marginLeft: () => { 
                                 return Math.floor((((Math.random()/2)) * 100) - 25) + "%" 
-                            },
+                            },*/
                         },
                         "75%":{ opacity: 1},
                         "100%":{textShadow: "0px 0px 0px #FFFFFF", opacity: 0},
