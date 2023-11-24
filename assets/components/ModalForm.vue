@@ -1,5 +1,6 @@
 <script setup>
 import { ref, useAttrs, reactive, watch, onMounted } from 'vue'
+import { useReCaptcha } from 'vue-recaptcha-v3'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email, alphaNum, helpers } from '@vuelidate/validators'
 import { gsap } from "gsap"
@@ -38,11 +39,17 @@ const rules = {
 }
 
 const v$ = useVuelidate(rules, state)
+const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
 
 const sendMail = async() => {
-    const validation = await v$.value.$validate()
+    const [validation, recaptcha] = await Promise.all([
+        v$.value.$validate(),
+        recaptchaLoaded()
+    ])
 
-    if(validation && (!sent.value || sent.value === 3)){
+    const token = await executeRecaptcha('login')
+
+    if(token && validation && (!sent.value || sent.value === 3)){
         sent.value = 1
         const requestOptions = {
             method: "POST",
