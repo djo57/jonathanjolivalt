@@ -33,7 +33,6 @@ onMounted(async () => {
     /* SQUARE */
     gsap.to(".boxes .box li", {
         "--gsap-rotation": "360deg",
-        //repeat: -1,
         duration: 8,
         ease: "linear",
         stagger:{
@@ -78,25 +77,14 @@ onMounted(async () => {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    /*padding: 0 50px;*/
-    /*transform-style:preserve-3d;*/
     perspective:2400px;
-    /*background-color: white;*/
     clear: both;
 }
-/*.boxes.test {
-    flex-direction: column;
-    padding: 0 10px;
-  }*/
 .boxes .box {
     flex: 1;
-    /*padding: 16px;*/
-    /*background-color: red;*/
-    margin: 50px;
+    margin: 50px 2%;
     border-radius: 15px;
     border: var(--box-border);
-    /*transform-style:preserve-3d;*/
-    /*perspective:600px;*/
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background: rgb(255,255,255);
     background: -moz-linear-gradient(38deg, rgba(255,255,255,1) 0%, rgba(212,212,212,1) 100%);
@@ -109,8 +97,6 @@ onMounted(async () => {
     text-align: center;
     font-size: 2rem;
     color: white;
-    /*background-image: url("https://cdn.futura-sciences.com/cdn-cgi/image/width=1920,quality=60,format=auto/sources/images/Code-informatique.jpeg");*/
-    /*background-size: cover;*/
     border-bottom: var(--box-border);
     border-radius: 15px 15px 0 0;
     background: var(--color1);
@@ -121,7 +107,6 @@ onMounted(async () => {
 }
 .boxes .box ul{
     padding: 2rem;
-    /*background: white;*/
 }
 .boxes .box li{
     padding: 0;
@@ -151,6 +136,15 @@ onMounted(async () => {
         height: 48px;
         margin-top: 2rem;
         margin-bottom: 2rem;
+    }
+}
+
+@media only screen and (orientation: portrait) and (min-width: 768px){
+    .box li{
+        font-size: 2rem;
+    }
+    .box h4{
+        font-size: 3rem!important;
     }
 }
 </style>

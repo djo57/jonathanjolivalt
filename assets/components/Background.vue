@@ -140,14 +140,8 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-/* BACKGROUND */
-
-/*.sec3{
-    overflow-x: visible;
-}*/
 .backgrounds{
     display: flex;
-    /*flex-direction: row;*/
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content:left;
@@ -156,24 +150,13 @@ onMounted(async () => {
     padding-top: 20px;
 }
 .background{
-    /*height: calc(80vh);*/
-    /*min-height: 80vh;*/
-    /*max-height: 100vh;*/
     flex: 2 1 auto;
     cursor: pointer;
     display: flex;
-    /*opacity: 0.5;*/
-    /*overflow-x: hidden;*/
     padding: 10px;
     max-width: 50%;
-    /*max-width: 25%;*/
-    /*width: 60px;*/
-    /*max-width: 50px;*/
     min-height: 400px;
 }
-/*.background.mw{
-    max-width: 50px;
-}*/
 .background.expanded{
     cursor: default;
 }
@@ -217,12 +200,9 @@ onMounted(async () => {
 }
 .background .wrapper{
     overflow-y: hidden;
-    /*overflow-x: hidden;*/
     z-index: -1;
     width: 100%;
     display: flex;
-    /*background: gray;*/
-    /*transform-origin: left;*/
 }
 .background .content{
     margin-top: 1rem;
@@ -238,7 +218,6 @@ onMounted(async () => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*white-space: nowrap;*/
     overflow-x: hidden;
     background: rgb(6,35,92);
     background: -moz-linear-gradient(104deg, rgba(6,35,92,0.47102591036414565) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 100%);
@@ -246,31 +225,6 @@ onMounted(async () => {
     background: linear-gradient(104deg, rgba(6,35,92,0.47102591036414565) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#06235c",endColorstr="#ffffff",GradientType=1);
 }
-/*.background{
-    max-width: 50px;
-}*/
-/*.background:first-child{
-    width: 100%;
-}*/
-/*.background:not(:first-child){
-    max-width: 50px;
-}*/
-/*.background:not(:first-child) .wrapper{
-    transform:scaleX(0);
-}*/
-/*.background:not(:first-child) .content{
-    transform: translateX(-110%);
-}*/
-
-/*.background{
-    max-width: 50px;
-}
-.background .wrapper{
-    transform:scaleX(0);
-}
-.background .content{
-    transform: translateX(-110%);
-}*/
 .backgrounds .tags{
     border-top: 1px solid gray;
     color: gray;
@@ -307,16 +261,7 @@ onMounted(async () => {
         display: block;
         max-width: 100%;
         min-height: 0;
-        /*overflow-x: hidden;*/
-        /*overflow: hidden;*/
-        /*min-height: 0;*/
     }
-    /*.background .wrapper{
-        display: none;
-    }*/
-    /*.background.expanded .wrapper{
-        display: block;
-    }*/
     .background .aside{
         width: 100%;
         min-height: 100px;
@@ -335,33 +280,34 @@ onMounted(async () => {
         justify-content: space-between;
         padding: 1rem 2rem;
     }
-    /*.background .wrapper{
-        overflow: hidden;
-    }*/
     .background .content{
         margin: 0;
         font-size: 1rem;
-        /*font-size: 2.5rem;*/
-        /*overflow-x: hidden;*/
     }
-    /*.background .content > *{
-        font-size: 2.5em;
-        display: block;
-    }*/
     .backgrounds .tags{
         font-size: 0.9rem;
         margin-top: 1rem;
         padding-top: 1rem;
     }
 }
-/*.loader-enter-active, 
-.loader-leave-active {
-  transition: opacity 1s ease-out;
-}
 
-.loader-enter-from,
-.loader-leave-to {
-    opacity: 0;
-}*/
+@media only screen and (orientation: portrait) and (min-width: 768px){
+    .background .aside .date, .background .aside h2{
+        font-size: 2.2rem;
+        padding-top: 9px;
+    }
+    .background .content .description{
+        font-size: 1.9rem;
+    }
+    .background .content .job{ 
+        font-size: 2.3rem;
+    }
+    .background .content .description >>> h3{
+        font-size: 2.1rem!important;
+    }
+    .background .tags{
+        font-size: 1.5rem!important;
+    }
+}
 
 </style>

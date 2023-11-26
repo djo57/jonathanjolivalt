@@ -196,16 +196,6 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-/*.loader-enter-active, 
-.loader-leave-active {
-  transition: opacity 1s ease-out;
-}
-
-.loader-enter-from,
-.loader-leave-to {
-    opacity: 0;
-}*/
-
 #hero-content-sticky{
     width: 400px;
     height: 100px;
@@ -214,7 +204,6 @@ onMounted(async () => {
     left: 10px;
     z-index: 999999;
     display: flex;
-    /*display: none;*/
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:stretch;
@@ -253,8 +242,6 @@ onMounted(async () => {
     vertical-align: middle;
 }
 #hero-content-sticky .contact .circle {
-	/*width:5vmin;
-	height:5vmin;*/
 	border-radius:50%;
     height: 256px;
     width: 256px;
@@ -310,10 +297,8 @@ onMounted(async () => {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:stretch;
-    /*font-family: 'Noto Sans Rejang', sans-serif;*/
     align-items: stretch;
     position: relative;
-    /*padding: 100px;*/
     min-height: 100vh;
     width: 100%;
     overflow-x: hidden;
@@ -339,8 +324,12 @@ onMounted(async () => {
 
 #hero-content .intro{
     width: 70%;
-    /*background: var(--color8);*/
     background: var(--gsap-gradiant);
+}
+@media only screen and (orientation: landscape) and (min-aspect-ratio: 2/1){
+    #hero-content .me::before{
+        background: none;
+    }
 }
 
 .hero .me img{
@@ -383,7 +372,6 @@ onMounted(async () => {
     font-weight: bold;
     font-size: 6rem;
     width: auto;
-    /*padding: 0 20px;*/
     padding-left: 10%;
 }
 #hero-content .lang span{
@@ -438,10 +426,6 @@ onMounted(async () => {
         font-size: 2.4rem;
         min-width: 100%;
     }
-    /*.hero .contact img{
-        width: 128px;
-        height: 128px;
-    }*/
     #hero-content .lang li{
         vertical-align: middle;
     }
@@ -457,8 +441,6 @@ onMounted(async () => {
     }
 }
 .hero .contact .circle, #hero-content-sticky .circle {
-	/*width:5vmin;
-	height:5vmin;*/
 	border-radius:50%;
     height: 256px;
     width: 256px;
@@ -475,52 +457,11 @@ onMounted(async () => {
     margin-left: -32px;
     z-index: 0;
 }
-/*.circle span {
-	color:white;
-	font-weight:800;
-	font-family: sans-serif;
-	font-size:13vmin;
-}*/
-
-/*.hero .mask .bg{
-    background-color: pink;
-    color: #0D0B30;
-}
-.hero .mask .fg{
-    background-color: #0D0B30;
-    color: pink;
-}*/
 
 #hero-content .mask  > *{
     grid-area: 1/1;
 }
 
-/*@media only screen and (min-width: 900px) and (max-width: 1000px) {
-    body{
-        background-color: red;
-    }
-    #hero-content h1, h2, h3, p, ul, .para{
-        padding: 1rem;
-    }
-    #hero-content .mask{
-        font-size: 5.5rem;
-    }
-    #hero-content .mask li{
-        font-size: 5.5rem;
-    }
-    #hero-content h2{
-        font-size: 4.5rem;
-    }
-    #hero-content h3{
-        font-size: 1.5rem;
-    }
-    .hero p, .hero .para, #hero-content-sticky .para{
-        font-size: 1rem;
-    }
-    #hero-content ul{
-        font-size: 0.8rem;
-    }
-}*/
 @media only screen and (orientation: portrait){
     #hero-content{
         flex-direction: column;
@@ -545,6 +486,42 @@ onMounted(async () => {
     #hero-content .intro {
         width: 100%;
         padding-bottom: 5rem;
+    }
+}
+
+@media only screen and (orientation: portrait) and (min-width: 768px){
+    #hero-content p, #hero-content li{
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 1240px) and (min-width: 996px){
+    /*#hero-content p, #hero-content li{
+        font-size: 2rem;
+    }*/
+    #hero-content .mask li{
+        font-size: 5rem;
+    }
+    #hero-content h2{
+        font-size: 3.2rem;
+    }
+    #hero-content h3{
+        font-size: 1.4rem;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 995px){
+    /*#hero-content p, #hero-content li{
+        font-size: 2rem;
+    }*/
+    #hero-content .mask li{
+        font-size: 4rem;
+    }
+    #hero-content h2{
+        font-size: 2.4rem;
+    }
+    #hero-content h3{
+        font-size: 1.4rem;
     }
 }
 </style>
