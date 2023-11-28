@@ -81,7 +81,6 @@ onMounted(async () => {
     }
     .skills .content{
         min-height: 80vh;
-        /*margin: 51rem 0;*/
     }
 }
 </style>

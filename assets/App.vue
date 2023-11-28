@@ -168,7 +168,7 @@ export default {
                 isDesktop: "(orientation: landscape)",
             }, (context) => {
                 let { isDesktop, isMobile } = context.conditions
-                if(isMobile){
+                //if(isMobile){
                     gsap.set(skillsElement, {
                         perspectiveOrigin: "50% 100%"
                     })
@@ -181,7 +181,7 @@ export default {
                             scrub: 2,
                         }
                     })
-                }
+                /*}
                 else if(isDesktop){
                     gsap.set(skillsElement, {
                         perspectiveOrigin: "50% 70%"
@@ -195,7 +195,7 @@ export default {
                             scrub: 2
                         }
                     })
-                }
+                }*/
             })
 
             const grid = 9

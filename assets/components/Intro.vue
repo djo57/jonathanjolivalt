@@ -117,7 +117,7 @@ onMounted(async () => {
     }).from(".hero h3", {
         yPercent: 50
     }).to(".hero .mask li, .hero h2", {
-        letterSpacing: "-8px",
+        letterSpacing: window.innerHeight > window.innerWidth ? "-4px" : "-8px",
         opacity: 1
     }).from(".hero .introduction", {
         scale: 0.5
@@ -168,7 +168,10 @@ onMounted(async () => {
                 <h2>{{ intro.job }}</h2>
                 <h3>{{ intro.title }}</h3>
                 <p class="introduction">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum hendrerit sem, vitae sodales risus venenatis sit amet. Vestibulum nec urna purus. In nec leo et orci tincidunt pretium eu id est.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Fusce rutrum hendrerit sem, vitae sodales risus venenatis sit amet. 
+                    Vestibulum nec urna purus. In nec leo et orci tincidunt pretium eu id est.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
                 <div class="degree" v-if="intro.degrees">
                     <ul>
@@ -261,13 +264,15 @@ onMounted(async () => {
 
 @media only screen and (orientation: portrait){
     #hero-content-sticky{
-        height: 200px;
-        width: 650px;
+        /*height: 200px;
+        width: 650px;*/
+        padding-left: 2%;
+        width: 100%;
     }
-    #hero-content-sticky .me{
+    /*#hero-content-sticky .me{
         width: 200px;
-    }
-    #hero-content-sticky .me img{
+    }*/
+    /*#hero-content-sticky .me img{
         width: 200px;
         height: 200px;
     }
@@ -281,7 +286,7 @@ onMounted(async () => {
     #hero-content-sticky .contact img{
         width: 128px;
         height: 128px;
-    }
+    }*/
     .degree ul{
         list-style-type: square;
         list-style-position: inside;
@@ -326,11 +331,11 @@ onMounted(async () => {
     width: 70%;
     background: var(--gsap-gradiant);
 }
-@media only screen and (orientation: landscape) and (min-aspect-ratio: 2/1){
+/*@media only screen and (orientation: landscape) and (min-aspect-ratio: 2/1){
     #hero-content .me::before{
         background: none;
     }
-}
+}*/
 
 .hero .me img{
     width: 100%;
@@ -344,6 +349,14 @@ onMounted(async () => {
     font-size: 6rem;
     color: var(--color1);
     letter-spacing:0px;
+    display: grid;
+    padding: 0;
+}
+#hero-content .mask li{
+    font-weight: bold;
+    font-size: 6rem;
+    width: auto;
+    padding-left: 10%;
 }
 #hero-content h2{
     font-size: 4rem;
@@ -363,17 +376,10 @@ onMounted(async () => {
     color: var(--color5);
 }
 
-#hero-content .mask{
+/*#hero-content .mask{
     display: grid;
     padding: 0;
-}
-
-#hero-content .mask li{
-    font-weight: bold;
-    font-size: 6rem;
-    width: auto;
-    padding-left: 10%;
-}
+}*/
 #hero-content .lang span{
     margin-right: 10px;
     padding-right: 10px;
@@ -394,35 +400,40 @@ onMounted(async () => {
     vertical-align: middle;
 }
 @media only screen and (orientation: portrait){
-    #hero-wrapper{
+    /*#hero-wrapper{
         margin-top: -200px;
-    }
-    #hero-content p, ul{
-        padding: 2rem 0.5rem;
-    }
-    #hero-content h1, h2, h3{
+    }*/
+    #hero-content p{
         padding: 0.5rem;
+        padding-left: 1rem;
     }
+    /*#hero-content h1, h2, h3{
+        padding: 0.5rem;
+    }*/
     #hero-content .para{
-        padding: 2rem 0.5rem;
+        /*padding: 2rem 0.5rem;*/
+        padding-left: 1rem;
     }
     #hero-content .mask{
-        font-size: 9rem;
+        font-size: 2.5rem;
     }
     #hero-content .mask li{
-        font-size: 7rem;
+        font-size: 2.5rem;
         padding-left: 1rem;
     }
     #hero-content ul{
         padding: 0.5rem;
+        padding-left: 1rem;
     }
     #hero-content h2{
-        font-size: 5rem;
+        font-size: 1.8rem;
+        padding-left: 1rem;
     }
     #hero-content h3{
-        font-size: 3rem;
+        font-size: 1.5rem;
+        padding-left: 1rem;
     }
-    .hero .para{
+    /*.hero .para{
         font-size: 2.4rem;
         min-width: 100%;
     }
@@ -438,7 +449,7 @@ onMounted(async () => {
     }
     #hero-content .social a{
         padding-left: 5.8rem;
-    }
+    }*/
 }
 .hero .contact .circle, #hero-content-sticky .circle {
 	border-radius:50%;
@@ -472,9 +483,9 @@ onMounted(async () => {
     #hero-content .me{
         width: 100%;
         z-index: 2;
-        height: 300px;
-        max-height: 300px;
-        min-height: 300px;
+        height: 150px;
+        max-height: 150px;
+        min-height: 150px;
         overflow: hidden;
     }
     #hero-content .me::before{
@@ -489,16 +500,13 @@ onMounted(async () => {
     }
 }
 
-@media only screen and (orientation: portrait) and (min-width: 768px){
+/*@media only screen and (orientation: portrait) and (min-width: 768px){
     #hero-content p, #hero-content li{
         font-size: 2rem;
     }
 }
 
 @media only screen and (orientation: landscape) and (max-width: 1240px) and (min-width: 996px){
-    /*#hero-content p, #hero-content li{
-        font-size: 2rem;
-    }*/
     #hero-content .mask li{
         font-size: 5rem;
     }
@@ -511,9 +519,6 @@ onMounted(async () => {
 }
 
 @media only screen and (orientation: landscape) and (max-width: 995px){
-    /*#hero-content p, #hero-content li{
-        font-size: 2rem;
-    }*/
     #hero-content .mask li{
         font-size: 4rem;
     }
@@ -523,5 +528,5 @@ onMounted(async () => {
     #hero-content h3{
         font-size: 1.4rem;
     }
-}
+}*/
 </style>

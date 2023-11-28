@@ -222,9 +222,9 @@ textarea{
 
 @media only screen and (orientation: portrait){
     .content{
-        width: 90%;
+        width: 95%;
     }
-    input, textarea, .error, .ok, .pending{
+    /*input, textarea, .error, .ok, .pending{
         font-size: 2.5rem;
     }
     textarea{
@@ -233,6 +233,6 @@ textarea{
     .close{
         font-size: 12rem;
         margin-top: -5rem;
-    }
+    }*/
 }
 </style>

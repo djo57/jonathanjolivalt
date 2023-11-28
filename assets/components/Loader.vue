@@ -41,8 +41,8 @@ const onLeave = (el, done) => {
     z-index: 9999;
 }
 @media only screen and (orientation: portrait){
-    .loader{
+    /*.loader{
         font-size: 3rem;
-    }
+    }*/
 }
 </style>
