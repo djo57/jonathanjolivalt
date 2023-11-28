@@ -130,26 +130,9 @@ onMounted(async () => {
         padding: 50px 0;
       flex-direction: column;
       gap: 10px;
-      /*padding: 0 10px;
-      padding-bottom: 5rem;*/
     }
     .boxes .box{
         margin: 2%;
     }
-    /*.boxes .box li .delimiter{
-        width: 48px;
-        height: 48px;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }*/
 }
-
-/*@media only screen and (orientation: portrait) and (min-width: 768px){
-    .box li{
-        font-size: 2rem;
-    }
-    .box h4{
-        font-size: 3rem!important;
-    }
-}*/
 </style>

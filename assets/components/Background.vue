@@ -265,16 +265,8 @@ onMounted(async () => {
     }
     .background .aside{
         width: 100%;
-        /*min-height: 100px;*/
     }
-    /*.background .aside>*{
-        font-size: 2.5rem;
-    }
-    .background .aside h2{
-        font-size: 2.5rem;
-    }*/
     .background .aside .date{
-        /*min-width: 350px;*/
         min-width: 100%;
     }
     .background .label{
@@ -284,7 +276,6 @@ onMounted(async () => {
         display: block;
         text-align: center;
         min-width: 100%;
-        /*width: 100%;*/
     }
 
     .background .wrapper{
@@ -294,33 +285,8 @@ onMounted(async () => {
     .background .content{
         margin: 0;
         border-radius: 0px 0px 10px 10px;
+        box-shadow: 5px 0px 10px 0px rgba(0,0,0,0.3);
         -webkit-box-shadow: 5px 0px 10px 0px rgba(0,0,0,0.3);
-        /*font-size: 1rem;*/
     }
-    /*.backgrounds .tags{
-        font-size: 0.9rem;
-        margin-top: 1rem;
-        padding-top: 1rem;
-    }*/
 }
-
-/*@media only screen and (orientation: portrait) and (min-width: 768px){
-    .background .aside .date, .background .aside h2{
-        font-size: 2.2rem;
-        padding-top: 9px;
-    }
-    .background .content .description{
-        font-size: 1.9rem;
-    }
-    .background .content .job{ 
-        font-size: 2.3rem;
-    }
-    .background .content .description >>> h3{
-        font-size: 2.1rem!important;
-    }
-    .background .tags{
-        font-size: 1.5rem!important;
-    }
-}*/
-
 </style>

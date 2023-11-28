@@ -60,7 +60,6 @@ onMounted(async () => {
 
 <style scoped>
 .skills{
-    /*background-color: black;*/
     color: var(--color8);
     overflow: hidden;
     min-height: 200vh;
@@ -75,12 +74,12 @@ onMounted(async () => {
     perspective: 800px;
     perspective-origin: 50% 100%;
 }
-@media only screen and (orientation: portrait){
+@media only screen and (max-width: 1023px){
     .skills{
-        min-height: 80vh;
+        min-height: 100vh;
     }
     .skills .content{
-        min-height: 80vh;
+        min-height: 100vh;
     }
 }
 </style>

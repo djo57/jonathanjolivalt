@@ -1,5 +1,6 @@
 <script setup>
 import gsap from 'gsap'
+import { onMounted } from 'vue';
 
 const props = defineProps(['loader'])
 
@@ -13,6 +14,17 @@ const onLeave = (el, done) => {
         }
     })
 }
+
+onMounted(async () => {
+    gsap.to(".loader", {
+        duration: 0.3,
+        repeat: -1,
+        yoyo: true,
+        fontSize: "2rem",
+        color: "black",
+        ease: "expo.in"
+    })
+})
 </script>
 
 <template>
@@ -39,10 +51,7 @@ const onLeave = (el, done) => {
     display: flex;
     position: fixed;
     z-index: 9999;
-}
-@media only screen and (orientation: portrait){
-    /*.loader{
-        font-size: 3rem;
-    }*/
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 </style>

@@ -172,6 +172,7 @@ onMounted(async () => {
                     Fusce rutrum hendrerit sem, vitae sodales risus venenatis sit amet. 
                     Vestibulum nec urna purus. In nec leo et orci tincidunt pretium eu id est.
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Fusce rutrum hendrerit sem, vitae sodales risus venenatis sit amet.
                 </p>
                 <div class="degree" v-if="intro.degrees">
                     <ul>
@@ -180,7 +181,7 @@ onMounted(async () => {
                 </div>
                 <div class="lang">
                     <ul>
-                        <li><span class="fi fi-fr"></span>Français, courant</li>
+                        <li><span class="fi fi-fr"></span>Français, langue maternelle</li>
                         <li><span class="fi fi-gb"></span>Anglais, B1</li>
                     </ul>
                 </div>
@@ -262,31 +263,11 @@ onMounted(async () => {
     z-index: 0;
 }
 
-@media only screen and (orientation: portrait){
+@media only screen and (max-width: 719px){
     #hero-content-sticky{
-        /*height: 200px;
-        width: 650px;*/
         padding-left: 2%;
         width: 100%;
     }
-    /*#hero-content-sticky .me{
-        width: 200px;
-    }*/
-    /*#hero-content-sticky .me img{
-        width: 200px;
-        height: 200px;
-    }
-    #hero-content-sticky .para{
-        height: 150px;
-        margin-left: -40px;
-        margin-top: 25px;
-        line-height: 130px;
-        font-size: 2.4rem!important;
-    }
-    #hero-content-sticky .contact img{
-        width: 128px;
-        height: 128px;
-    }*/
     .degree ul{
         list-style-type: square;
         list-style-position: inside;
@@ -331,11 +312,6 @@ onMounted(async () => {
     width: 70%;
     background: var(--gsap-gradiant);
 }
-/*@media only screen and (orientation: landscape) and (min-aspect-ratio: 2/1){
-    #hero-content .me::before{
-        background: none;
-    }
-}*/
 
 .hero .me img{
     width: 100%;
@@ -375,11 +351,6 @@ onMounted(async () => {
     font-size: 1.1rem;
     color: var(--color5);
 }
-
-/*#hero-content .mask{
-    display: grid;
-    padding: 0;
-}*/
 #hero-content .lang span{
     margin-right: 10px;
     padding-right: 10px;
@@ -399,17 +370,11 @@ onMounted(async () => {
     height: 64px;
     vertical-align: middle;
 }
-@media only screen and (orientation: portrait){
-    /*#hero-wrapper{
-        margin-top: -200px;
-    }*/
+@media only screen and (max-width: 719px){
     #hero-content p{
         padding: 0.5rem;
         padding-left: 1rem;
     }
-    /*#hero-content h1, h2, h3{
-        padding: 0.5rem;
-    }*/
     #hero-content .para{
         /*padding: 2rem 0.5rem;*/
         padding-left: 1rem;
@@ -433,23 +398,6 @@ onMounted(async () => {
         font-size: 1.5rem;
         padding-left: 1rem;
     }
-    /*.hero .para{
-        font-size: 2.4rem;
-        min-width: 100%;
-    }
-    #hero-content .lang li{
-        vertical-align: middle;
-    }
-    #hero-content .lang span{
-        font-size: 3rem;
-        margin-right: 2rem;
-    }
-    #hero-content .social{
-        margin-top: 2rem;
-    }
-    #hero-content .social a{
-        padding-left: 5.8rem;
-    }*/
 }
 .hero .contact .circle, #hero-content-sticky .circle {
 	border-radius:50%;
@@ -473,7 +421,7 @@ onMounted(async () => {
     grid-area: 1/1;
 }
 
-@media only screen and (orientation: portrait){
+@media only screen and (max-width: 719px){
     #hero-content{
         flex-direction: column;
     }
@@ -500,33 +448,18 @@ onMounted(async () => {
     }
 }
 
-/*@media only screen and (orientation: portrait) and (min-width: 768px){
-    #hero-content p, #hero-content li{
-        font-size: 2rem;
+@media only screen and (min-width: 720px) and (max-width: 1366px){
+    #hero-content .mask{
+        font-size: 5rem;
     }
-}
-
-@media only screen and (orientation: landscape) and (max-width: 1240px) and (min-width: 996px){
     #hero-content .mask li{
         font-size: 5rem;
     }
     #hero-content h2{
-        font-size: 3.2rem;
+        font-size: 3.5rem;
     }
     #hero-content h3{
-        font-size: 1.4rem;
+        font-size: 2rem;
     }
 }
-
-@media only screen and (orientation: landscape) and (max-width: 995px){
-    #hero-content .mask li{
-        font-size: 4rem;
-    }
-    #hero-content h2{
-        font-size: 2.4rem;
-    }
-    #hero-content h3{
-        font-size: 1.4rem;
-    }
-}*/
 </style>

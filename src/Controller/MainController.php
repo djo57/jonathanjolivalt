@@ -54,7 +54,14 @@ class MainController extends AbstractController
         "name" => "Jonathan Jolivalt",
         "job" => "Développeur Full-stack",
         "title" => "15 ans d'expérience",
-        "description" => "Besoin d'un site web ? D'une boutique en ligne ? D'un système d'administration ? D'une API ? J'ai décidé de me lancer dans l'aventure Freelance afin de mettre mes compétences à votre service. N'hésitez pas à me contacter via le formulaire de contact ou via Linkedin.",
+        "description" => "
+        Besoin d'un site web ? 
+        D'une boutique en ligne ? 
+        D'un système d'administration ? 
+        D'une API ? 
+        Après 10 ans de consultance en tant qu'analyste programmeur et 5 ans d'agences Web, 
+        j'ai décidé de me lancer dans l'aventure Freelance afin de mettre mes compétences à votre service. 
+        N'hésitez pas à me contacter via le formulaire de contact ou via Linkedin.",
         "degrees" => [
           "Licence Professionnelle Web et Commerce Electronique, IUT Saulcy, Metz (2006)",
           "DUT Informatique de Gestion, Université de Luxembourg, Limpertsberg (2004)",

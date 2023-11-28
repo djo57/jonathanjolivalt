@@ -224,15 +224,5 @@ textarea{
     .content{
         width: 95%;
     }
-    /*input, textarea, .error, .ok, .pending{
-        font-size: 2.5rem;
-    }
-    textarea{
-        min-height: 500px;
-    }
-    .close{
-        font-size: 12rem;
-        margin-top: -5rem;
-    }*/
 }
 </style>
