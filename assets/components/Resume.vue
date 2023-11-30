@@ -56,7 +56,7 @@ onMounted(async () => {
 
 </script>
 <template>
-    <div class="sec">
+    <div class="sec sec-resume">
         <h1>Résumé</h1>
         <div class="boxes content">
             <div class="square square1"></div>
@@ -133,6 +133,17 @@ onMounted(async () => {
     }
     .boxes .box{
         margin: 2%;
+    }
+}
+
+@media only print{
+    .sec-resume{
+        page-break-before: always;
+    }
+    .boxes .box {
+        opacity: 1!important;
+        display: block!important;
+        transform: rotateY(0deg)!important;
     }
 }
 </style>

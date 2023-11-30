@@ -462,4 +462,12 @@ onMounted(async () => {
         font-size: 2rem;
     }
 }
+@media only print{
+    #hero-content-sticky{
+        display: none!important;
+    }
+    #hero-content .me{
+        display: block!important;
+    }
+}
 </style>

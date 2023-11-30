@@ -289,4 +289,31 @@ onMounted(async () => {
         -webkit-box-shadow: 5px 0px 10px 0px rgba(0,0,0,0.3);
     }
 }
+@media only print{
+    .backgrounds{
+        display: block!important;
+        padding-top: 0!important;
+    }
+    .background{
+        display: block!important;
+        opacity: 1!important;
+        transform: translateX(0)!important;
+        max-width: 100%!important;
+        page-break-before: auto;
+    }
+    .background .aside{
+        box-shadow: none!important;
+    }
+    .background .label{
+        transform: rotate(0deg) translateX(0px)!important;
+        min-width: auto!important;
+        display: block!important;
+    }
+    .background .content{
+        margin: 0!important;
+        border-radius: 10px!important;
+        box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.3)!important;
+        -webkit-box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.3)!important;
+    }
+}
 </style>

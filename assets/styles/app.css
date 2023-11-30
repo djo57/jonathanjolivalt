@@ -95,7 +95,7 @@ h1{
     -webkit-transform:skew(-30deg);
 	-moz-transform:skew(-30deg);
 	-o-transform:skew(-30deg);
-	tranform:skew(-30deg);
+	transform:skew(-30deg);
     float: right;
     transform-origin: bottom;
     margin-top: 10px; /* before margin */
@@ -138,22 +138,22 @@ h1::after{
         width: 350px;
     }
 }
-/*@media only screen and (max-width: 1000px) and (orientation: landscape) {
+@media only print{
     h1{
-        font-size: 4rem;
-        width: 500px;
+        opacity: 1!important;
+        display: block!important;
+        transform:skew(0deg)!important;
+        float: none!important;
+        text-align: center!important;
+        width: 100%!important;
+        padding-right: 0!important;
+    }
+    h1::before, h1::after{
+        margin-left: 0!important;
     }
 }
-@media only screen and (max-width: 600px) and (orientation: landscape) {
-    h1{
-        font-size: 3rem;
-        margin-bottom: 50px;
-        width: 400px;
-    }
-}*/
 .sec{
     position: relative;
-    /*padding: 100px;*/
     min-height: 100vh;
     width: 100%;
     overflow-x: hidden;
@@ -161,12 +161,6 @@ h1::after{
 .sec .content{
     clear: both;
 }
-/*.sec:nth-child(odd){ 
-    background-color:beige;
-}*/
-/*.sec:not(.sec:first-child){
-    border-top: 10px solid red;
-}*/
 h2{
     color: #222;
     font-size: 5rem;
@@ -254,6 +248,31 @@ h2{
         font-size: 5vw;
     }
 }
+@media only print{
+    .skills{
+        color: black!important;
+        overflow: auto!important;
+        min-height: auto!important;
+    }
+    .skills .wrapper{
+        opacity: 1!important;
+        display: block!important;
+        height: auto!important;
+        z-index: 1!important;
+        transform: translateZ(none)!important;
+
+    }
+    .skills .skill{
+        font-weight: normal!important;
+        text-transform: none!important;
+        font-size: 1rem!important;
+        text-shadow: none!important;
+    }
+    .skills .content{
+        min-height: auto!important;
+        background: none!important;
+    }
+}
 
 /* PARALAX */
 
@@ -272,12 +291,3 @@ h2{
     background-color: rgb(255, 252, 61);
     box-shadow: var(--gsap-box-shadow);
 }
-
-/*@media (max-width: 800px) {
-    .backgrounds{
-        flex-direction: column;
-    }
-    .background .content{
-        white-space: normal;
-    }
-}*/
