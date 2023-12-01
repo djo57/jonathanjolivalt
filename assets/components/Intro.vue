@@ -3,6 +3,7 @@ import {ref, onMounted} from "vue"
 import { gsap } from "gsap"
 import hero from '../images/jonathanjolivalt.jpg'
 import contact from '../images/contact.svg'
+import Picture from "./Picture.vue";
 
 const intro = ref(false)
 const emit = defineEmits(['showModal', 'updateIntro'])
@@ -153,14 +154,14 @@ onMounted(async () => {
         <div class="me"></div>
     </div>
     <header class="sec hero" id="hero-wrapper">
-        <div id="hero-content">
+        <div id="hero-content" v-if="intro">
             <div class="bar bar1"></div>
             <div class="bar bar2"></div>
             <div class="bar bar3"></div>
             <div class="me">
-                <img :src=hero alt="Photo of me">
+                <Picture v-model:pictures="intro.photos" />
             </div>
-            <div class="intro" v-if="intro">
+            <div class="intro">
                 <ul class="mask">
                     <li class="bg">{{ intro.name }}</li>
                     <li class="fg">{{ intro.name }}</li>

@@ -51,6 +51,18 @@ class MainController extends AbstractController
     public function apiGetIntro(): JsonResponse
     {
       return new JsonResponse([
+        "photos" => [
+          "original" => "jonathanjolivalt.jpg",
+          200 => "jonathanjolivalt200.jpg",
+          504 => "jonathanjolivalt504.jpg",
+          715 => "jonathanjolivalt715.jpg",
+          865 => "jonathanjolivalt865.jpg",
+          1008 => "jonathanjolivalt1008.jpg",
+          1103 => "jonathanjolivalt1103.jpg",
+          1215 => "jonathanjolivalt1215.jpg",
+          1232 => "jonathanjolivalt1232.jpg",
+          1400 => "jonathanjolivalt1400.jpg",
+        ],
         "name" => "Jonathan Jolivalt",
         "job" => "Développeur Full-stack",
         "title" => "15 ans d'expérience",
