@@ -1,5 +1,14 @@
 CONSOLE = php bin/console
 CONSOLE_TEST = php bin/console
+GIT_ADD = git add
+
+add:
+	$(GIT_ADD) assets/*.js
+	$(GIT_ADD) assets/*.scss
+	$(GIT_ADD) public/build/*.css
+	$(GIT_ADD) public/build/*.js
+	$(GIT_ADD) public/build/*.json
+	$(GIT_ADD) templates/*.twig
 
 server:
 	symfony server:start -d
@@ -11,7 +20,12 @@ prod:
 push:
 	git push -u origin main
 
-prod-install:
+pull:
+	git stash save
+	git pull
+	git stash pop
+
+prod-install:exi
 	APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear
 
 doctrine-validate:
@@ -33,6 +47,9 @@ migrate: ## Apply doctrine migrate
 
 generate-jwt: ## Generate private and public keys
 	$(CONSOLE) lexik:jwt:generate-keypair --overwrite -q $c
+
+fixtures:
+	$(CONSOLE) doctrine:fixtures:load
 
 ## —— Tests ✅ ————————————————————————————————————————————————————————————
 test-database: ### load database schema

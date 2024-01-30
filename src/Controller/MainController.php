@@ -3,14 +3,16 @@
 namespace App\Controller;
 
 use Symfony\Component\Mime\Email;
+use App\Repository\SkillRepository;
+use App\Factory\JsonResponseFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 
 class MainController extends AbstractController
 {
@@ -123,11 +125,13 @@ class MainController extends AbstractController
     }
 
     #[Route("/api/skills/get", name: "api_skills", priority: 1, methods: ["GET"])]
-    public function apiGetSkills(): JsonResponse
+    public function apiGetSkills(SkillRepository $skillRepository): JsonResponse
     {
-      return new JsonResponse([
+      $skills = $skillRepository->findAllArray();
+      return new JsonResponse($skills);
+      /*return new JsonResponse([
         "PHP8", "Vue3", "Symfony6", "EasyAdmin", "React", "MySQL", "Gsap3", "HTML5", "CSS3", "Javascript", "Docker", "Ajax", "Bootstrap", "API Rest", "Soap", "Tailwind", "JQuery", "Ajax", "Windows", "Ubuntu", "Twig", "VScode", "Netbeans", "Jira", "Trello", "Git", "GitLab", "SVN", "GitExt", "Agile", "Kanban", "AWS", "EC2", "SES", "Responsive", "Exalead", "Cheetahmail"
-      ]);
+      ]);*/
     }
 
     #[Route("/api/backgrounds/get", name: "api_backgrounds", priority: 1, methods: ["GET"])]

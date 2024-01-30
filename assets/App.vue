@@ -133,6 +133,10 @@ export default {
     skills(datas){
         if(datas && Array.isArray(datas)){
             /* SKILLS SCROLL ANIMATION */
+
+            /**
+             * BACKGROUND ANIMATION
+             */
             gsap.to(".skills", {
                 "--gsap-skills-gradiant": "radial-gradient(circle, rgba(0,17,34,1) 0%, rgba(255,255,255,1) 20%)",
                 keyframes:{
@@ -149,6 +153,9 @@ export default {
                 }
             })
 
+            /**
+             * STARS ANIMATION
+             */
             gsap.from(".stars", {
                 scale: 0.01,
                 ease: "power1.inOut",
@@ -198,6 +205,9 @@ export default {
                 }*/
             })
 
+            /**
+             * STARS INIT
+             */
             const grid = 9
             var currentWrapper = false
             var currentPos = 0
@@ -221,9 +231,12 @@ export default {
 
                 let skillElement = document.createElement("div")
                 skillElement.classList.add("skill")
-                skillElement.textContent = data
+                skillElement.textContent = data.name
                 currentWrapper.appendChild(skillElement)
 
+                /**
+                 * TEXT ANIMATION
+                 */
                 gsap.set(skillElement, {
                     textShadow: "0px 0px 0px #FFFFFF",
                     opacity:0
@@ -235,9 +248,6 @@ export default {
                         "25%":{ opacity: 1},
                         "50%":{
                             textShadow: "0px 0px 100px #FFFFFF", 
-                            /*marginLeft: () => { 
-                                return Math.floor((((Math.random()/2)) * 100) - 25) + "%" 
-                            },*/
                         },
                         "75%":{ opacity: 1},
                         "100%":{textShadow: "0px 0px 0px #FFFFFF", opacity: 0},
@@ -251,7 +261,7 @@ export default {
                 })
             })
 
-            gsap.from(".wrapper", {
+            /*gsap.from(".wrapper", {
                 duration: 0.5,
                 scale: 0.5,
                 stagger: 0.1,
@@ -261,7 +271,7 @@ export default {
                     start: "top 80%",
                     toggleActions: "restart reverse restart reverse"
                 }
-            })
+            })*/
             this.checkScroller()
         }
     },
