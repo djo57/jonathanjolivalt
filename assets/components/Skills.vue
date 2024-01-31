@@ -1,6 +1,7 @@
 <script setup>
 import {ref, onMounted} from "vue"
 import { gsap } from "gsap"
+import Search from "./Search.vue";
 
 const skills = ref(false)
 const emit = defineEmits(['updateDom'])
@@ -48,6 +49,7 @@ onMounted(async () => {
 <template>
     <div class="sec skills">
         <h1>Compétences</h1>
+        <Search :skills=skills />
         <div class="content">
             <div class="stars"></div>
             <div class="stars"></div>
